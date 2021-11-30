@@ -6,5 +6,5 @@ services:
       - /home/oracle/oradata:/opt/oracle/oradata # persistent oracle database data.
     ports:
       - 1521:1521
-      - 8080:8080
+      - 8090:8090
       - 5500:5500
