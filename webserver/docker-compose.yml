@@ -2,7 +2,7 @@ version: '3'
 services:
   php-apache-environment:
     container_name: php-apache
-    image: php:8.0-apache
+    image: adrazich/fit-php7-oci8-laravel
     volumes:
       - ./php/src:/var/www/html/
     ports:
