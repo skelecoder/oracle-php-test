@@ -4,6 +4,6 @@ services:
     container_name: php-apache
     image: adrazich/fit-php7-oci8-laravel
     volumes:
-      - ./php/src:/var/www/html/
+      - ./src:/var/www/html/
     ports:
       - 8060:80
