@@ -54,6 +54,7 @@
 		// DATE
 		$date 		 = date('l, d F Y , H:i:s');
 		$email_body .= "{$date} <br>";
+		exit;}
 
 
 	function do_insert($conn) {
