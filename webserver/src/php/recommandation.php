@@ -33,6 +33,8 @@
 
 		// }
 			debug_to_console($post_data);
+			file_put_contents('php://stderr', print_r($post_data, TRUE));
+			error_log(print_r($post_data, TRUE));
 
 
 		// Check for required! Redirect if something found empty!
