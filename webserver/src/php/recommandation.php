@@ -32,10 +32,7 @@
 		// foreach($post_data as $key=>$value) {
 
 		// }
-			debug_to_console($post_data);
-			file_put_contents('php://stderr', print_r($post_data, TRUE));
-			error_log(print_r($post_data, TRUE));
-
+		file_put_contents('php://stderr', print_r($post_data, TRUE));
 
 		// Check for required! Redirect if something found empty!
 		foreach($required as $req) {
@@ -49,6 +46,10 @@
 			}
 		}
 
+		$stmt = "insert into recommandations values (".$post_data['titre'] .",TO_DATE( '".$post_data['start_date']."', 'DD-MM-YYYY' ),TO_DATE( '".$post_data['end_date']."', 'DD-MM-YYYY' ),".$post_data['escompte'].",".$post_data['obtenu'].",".$post_data['observations'].",".$post_data['ressources'].",".$post_data['responsable'].",".$post_data['actions']." )";
+		$s = oci_parse($conn, $stmt);
+		$r = oci_execute($s);
+
 		// Visitor IP:
 		$ip = ip();
 
@@ -56,23 +57,24 @@
 		// DATE
 		$date 		 = date('l, d F Y , H:i:s');
 		$email_body .= "{$date} <br>";
-		exit;}
+		exit;
+	}
 
 
-	function do_insert($conn) {
-		$stmt = "insert into recommandations values ()";
-		$s = oci_parse($conn, $stmt);
-		$r = oci_execute($s, OCI_DEFAULT);  // Don't commit
-		}
+	// function do_insert($conn) {
+	// 	$stmt = "insert into recommandations values (".$post_data['titre'] .",TO_DATE( '".$post_data['start_date']."', 'DD-MM-YYYY' ),TO_DATE( '".$post_data['end_date']."', 'DD-MM-YYYY' ),".$post_data['escompte'].",".$post_data['obtenu'].",".$post_data['observations'].",".$post_data['ressources'].",".$post_data['responsable'].",".$post_data['actions']." )";
+	// 	$s = oci_parse($conn, $stmt);
+	// 	$r = oci_execute($s);  // Don't commit
+	// }
 
 
-function debug_to_console($data) {
-    $output = $data;
-    if (is_array($output))
-        $output = implode(',', $output);
+	function debug_to_console($data) {
+		$output = $data;
+		if (is_array($output))
+			$output = implode(',', $output);
 
-    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
-}
+		echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+	}
 
 /** ******************************** **
  *	@REDIRECT
