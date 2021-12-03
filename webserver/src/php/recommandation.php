@@ -1,5 +1,5 @@
 <?php
-/	date_default_timezone_set('Etc/UTC');
+	date_default_timezone_set('Etc/UTC');
 	@ini_set('display_errors', 0);
 	@ini_set('track_errors', 0);
 
