@@ -9,7 +9,7 @@ file_put_contents('php://stderr', print_r($res, TRUE));
 echo "<tr>";
 
 $i = 0;
-foreach($res['id'] as $value){
+foreach($res as $value){
     echo "<tr><td class='text-center'>
     ".$value['id']."
   </td>
