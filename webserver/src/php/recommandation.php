@@ -51,9 +51,7 @@
 
 		$r = oci_execute($s);
 
-		echo '<script type="text/javascript">
-           window.location = "../table-recommendations.html"
-      </script>';
+		header("Location: http://178.18.252.38:8060/table-recommandations.html")
 
 		exit();
 	}
