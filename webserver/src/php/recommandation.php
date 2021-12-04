@@ -51,15 +51,8 @@
 
 		$r = oci_execute($s);
 
+		header('Location: table-recommandations.html');
 
-
-		// Visitor IP:
-		$ip = ip();
-
-
-		// DATE
-		$date 		 = date('l, d F Y , H:i:s');
-		$email_body .= "{$date} <br>";
 		exit;
 	}
 
@@ -96,16 +89,4 @@
 		exit;
 	}
 
- /** ********************************** 
- @VISITOR ip
-/** ******************************* **/
-	function ip() {
-		if     (getenv('HTTP_CLIENT_IP'))       { $ip = getenv('HTTP_CLIENT_IP');       } 
-		elseif (getenv('HTTP_X_FORWARDED_FOR')) { $ip = getenv('HTTP_X_FORWARDED_FOR'); } 
-		elseif (getenv('HTTP_X_FORWARDED'))     { $ip = getenv('HTTP_X_FORWARDED');     } 
-		elseif (getenv('HTTP_FORWARDED_FOR'))   { $ip = getenv('HTTP_FORWARDED_FOR');   } 
-		elseif (getenv('HTTP_FORWARDED'))       { $ip = getenv('HTTP_FORWARDED');       } 
-										   else { $ip = $_SERVER['REMOTE_ADDR'];        } 
-		return $ip;
-	}
 ?>
