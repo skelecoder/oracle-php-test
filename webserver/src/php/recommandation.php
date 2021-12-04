@@ -50,9 +50,9 @@
 		$s = oci_parse($conn, $stmt);
 
 		$r = oci_execute($s);
-
-		_redirect('/')
-
+		ob_start();
+		header("Location: ../table-recommandations.html")
+		ob_start();
 		exit();
 	}
 
