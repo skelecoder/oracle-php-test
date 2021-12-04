@@ -32,7 +32,6 @@
 		// foreach($post_data as $key=>$value) {
 
 		// }
-		file_put_contents('php://stderr', print_r($post_data, TRUE));
 
 		// Check for required! Redirect if something found empty!
 		foreach($required as $req) {
@@ -49,9 +48,7 @@
 		$stmt = "insert into recommandations (titre,start_date,end_date,escompte,obtenu,observations,ressources,responsable,actions) values ('".$post_data['titre'] ."',TO_DATE( '".$post_data['start_date']."', 'DD-MM-YYYY' ),TO_DATE( '".$post_data['end_date']."', 'DD-MM-YYYY' ),'".$post_data['escompte']."','".$post_data['obtenu']."','".$post_data['observations']."','".$post_data['ressources']."','".$post_data['responsable']."','".$post_data['actions']."' )";
 		$s = oci_parse($conn, $stmt);
 
-		file_put_contents('php://stderr', print_r($s, TRUE));
 		$r = oci_execute($s);
-		file_put_contents('php://stderr', print_r($r, TRUE));
 
 
 		// Visitor IP:
