@@ -12,7 +12,7 @@ $i = 0;
 $myarray = $res['ID'];
 foreach($myarray as $value){
     echo "<tr><td class='text-center'>
-    ".$value['id']."
+    ".$value['ID']."
   </td>
   <td>".$res['TITRE'][$i]."</td>
   <td>
