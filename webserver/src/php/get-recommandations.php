@@ -9,11 +9,12 @@ file_put_contents('php://stderr', print_r($res, TRUE));
 echo "<tr>";
 
 $i = 0;
-foreach($res as $value){
+$myarray = $res['ID'];
+foreach($myarray as $value){
     echo "<tr><td class='text-center'>
     ".$value['id']."
   </td>
-  <td>".$res['titre'][$i]."</td>
+  <td>".$res['TITRE'][$i]."</td>
   <td>
     <div class='rating rating-0 size-13 width-100'>
     </div>
