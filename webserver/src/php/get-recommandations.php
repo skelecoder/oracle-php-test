@@ -8,12 +8,12 @@ oci_fetch_all($s, $res);
 file_put_contents('php://stderr', print_r($res, TRUE));
 echo "<tr>";
 
-
-foreach($res as $value){
-    echo "<td class='text-center'>
+$i = 0;
+foreach($res['id'] as $value){
+    echo "<tr><td class='text-center'>
     ".$value['id']."
   </td>
-  <td>Value 1</td>
+  <td>".$res['titre'][$i]."</td>
   <td>
     <div class='rating rating-0 size-13 width-100'>
     </div>
@@ -83,8 +83,8 @@ foreach($res as $value){
   </td>
   <td>
     <span class='label label-success'>Approved </span>
-  </td>";
+  </td></tr>";
+  $i++;
 }
 
-echo "</tr>";
 ?>
