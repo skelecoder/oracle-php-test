@@ -83,7 +83,7 @@ foreach($res as $value){
   </td>
   <td>
     <span class='label label-success'>Approved </span>
-  </td>");
+  </td>";
 }
 
 echo "</tr>";
