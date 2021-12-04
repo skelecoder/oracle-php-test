@@ -12,7 +12,6 @@
 
 	// Check Action First!
 	if(isset($_POST['action']) && $_POST['action'] == 'recommandation_send') {
-		$email_body = null;
 		$array 		= $required = array();
 
 		// catch post data
@@ -32,7 +31,6 @@
 		// foreach($post_data as $key=>$value) {
 
 		// }
-		file_put_contents('php://stderr', print_r($post_data, TRUE));
 
 		// Check for required! Redirect if something found empty!
 		foreach($required as $req) {
@@ -50,6 +48,7 @@
 		$s = oci_parse($conn, $stmt);
 
 		$r = oci_execute($s);
+		_redirect("Location: /")
 		exit;
 	}
 
