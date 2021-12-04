@@ -2,7 +2,13 @@
 
 require('connect.php');
 
-echo "<tr>
+$s = oci_parse($c, 'select * from recommandations');
+oci_execute($s);
+oci_fetch_all($s, $res);
+file_put_contents('php://stderr', print_r($res, TRUE));
+echo "<tr>"
+
+echo "
 <td class='text-center'>
   <img src='assets/images/male.png' alt='' width='20' />
 </td>

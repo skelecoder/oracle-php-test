@@ -32,6 +32,7 @@
 		// foreach($post_data as $key=>$value) {
 
 		// }
+		file_put_contents('php://stderr', print_r($post_data, TRUE));
 
 		// Check for required! Redirect if something found empty!
 		foreach($required as $req) {
@@ -49,6 +50,7 @@
 		$s = oci_parse($conn, $stmt);
 
 		$r = oci_execute($s);
+
 
 
 		// Visitor IP:
