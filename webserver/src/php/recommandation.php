@@ -53,7 +53,7 @@
 
 		header('Location: ../table-recommandations.html');
 
-		exit;
+		exit();
 	}
 
 
