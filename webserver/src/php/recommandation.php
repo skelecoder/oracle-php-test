@@ -51,7 +51,9 @@
 
 		$r = oci_execute($s);
 
-		header('Location: ../table-recommandations.html');
+		echo '<script type="text/javascript">
+           window.location = "../table-recommendations.html"
+      </script>';
 
 		exit();
 	}
