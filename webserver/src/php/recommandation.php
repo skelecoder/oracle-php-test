@@ -51,7 +51,7 @@
 
 		$r = oci_execute($s);
 
-		header("Location: http://178.18.252.38:8060/table-recommandations.html");
+		_redirect('/')
 
 		exit();
 	}
