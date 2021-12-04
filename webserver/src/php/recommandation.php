@@ -3,7 +3,7 @@
 	@ini_set('display_errors', 0);
 	@ini_set('track_errors', 0);
 
-	require('connect.php');
+	$conn = oci_connect("SYSTEM", "oracle", "//178.18.252.38:1521/xe");
 
 
 /** ******************************** **
@@ -48,7 +48,7 @@
 		$s = oci_parse($conn, $stmt);
 
 		$r = oci_execute($s);
-		header("Location: asd")
+		header("Location: asd");
 		exit;
 	}
 
