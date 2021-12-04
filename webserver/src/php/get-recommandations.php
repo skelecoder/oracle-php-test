@@ -2,7 +2,7 @@
 
 require('connect.php');
 
-$s = oci_parse($c, 'select * from recommandations');
+$s = oci_parse($conn, 'select * from recommandations');
 oci_execute($s);
 oci_fetch_all($s, $res);
 file_put_contents('php://stderr', print_r($res, TRUE));
