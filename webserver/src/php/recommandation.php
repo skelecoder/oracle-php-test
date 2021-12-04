@@ -51,7 +51,7 @@
 
 		$r = oci_execute($s);
 
-		header('Location: table-recommandations.html');
+		header('Location: ../table-recommandations.html');
 
 		exit;
 	}
