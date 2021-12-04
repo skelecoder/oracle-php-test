@@ -16,6 +16,7 @@ Connect database with following setting:
 To connect using sqlplus:
 
 <pre>
+sudo docker exec -it 4f7143973659 sh
 sqlplus system/oracle@//178.18.252.38:1521/xe
 </pre>
 
