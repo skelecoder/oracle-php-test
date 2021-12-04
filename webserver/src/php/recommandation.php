@@ -48,7 +48,7 @@
 		$s = oci_parse($conn, $stmt);
 
 		$r = oci_execute($s);
-		header("Location: connect.php")
+		header("Location: asd")
 		exit;
 	}
 
