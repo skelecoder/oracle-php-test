@@ -641,7 +641,7 @@
         xmlhttp.open("GET", "php/get-recommandations.php", true);
         xmlhttp.send();
       }
-      document.onload(getRecommandations());
+      document.addEventListener("DOMContentLoaded", getRecommandations);
     </script>
   </body>
 </html>

@@ -8,7 +8,6 @@ if (!$conn) {
    exit;
 }
 else {
-   print "Connected to Oracle!";
 }
 
 // Close the Oracle connection
