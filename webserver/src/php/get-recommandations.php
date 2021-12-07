@@ -16,75 +16,27 @@ foreach($myarray as $value){
   </td>
   <td>".$res['TITRE'][$i]."</td>
   <td>
-    <div class='rating rating-0 size-13 width-100'>
-    </div>
+  ".$res['START_DATE'][$i]."
   </td>
   <td>
-    <div class='progress progress-xxs margin-bottom-0'>
-      <div
-        class='progress-bar progress-bar-default'
-        role='progressbar'
-        aria-valuenow='80'
-        aria-valuemin='0'
-        aria-valuemax='100'
-        style='width: 80%; min-width: 2em'
-      >
-        <span class='sr-only'>80% Complete</span>
-      </div>
-    </div>
+  ".$res['END_DATE'][$i]."
   </td>
   <td>
-    <ul class='list-inline nomargin size-12'>
-      <li>
-        <a
-          href='#'
-          class='icon-facebook margin-top-6'
-          data-toggle='tooltip'
-          data-placement='top'
-          title='Facebook'
-        ></a>
-      </li>
-      <li>
-        <a
-          href='#'
-          class='icon-twitter margin-top-6'
-          data-toggle='tooltip'
-          data-placement='top'
-          title='Twitter'
-        ></a>
-      </li>
-      <li>
-        <a
-          href='#'
-          class='icon-gplus margin-top-6'
-          data-toggle='tooltip'
-          data-placement='top'
-          title='Google Plus'
-        ></a>
-      </li>
-      <li>
-        <a
-          href='#'
-          class='icon-linkedin margin-top-6'
-          data-toggle='tooltip'
-          data-placement='top'
-          title='Linkedin'
-        ></a>
-      </li>
-      <li>
-        <a
-          href='#'
-          class='icon-pinterest margin-top-6'
-          data-toggle='tooltip'
-          data-placement='top'
-          title='Pinterest'
-        ></a>
-      </li>
-    </ul>
+  ".$res['ESCOMPTE'][$i]."
   </td>
   <td>
-    <span class='label label-success'>Approved </span>
-  </td></tr>";
+  ".$res['OBTENU'][$i]."
+  </td>
+  <td>
+  ".$res['OBSERVATIONS'][$i]."
+  </td>
+  <td>
+  ".$res['RESSOURCES'][$i]."
+  </td>
+  <td>
+  ".$res['RESPONSABLE'][$i]."
+  </td>
+  </tr>";
   $i++;
 }
 
