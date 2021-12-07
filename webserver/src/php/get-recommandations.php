@@ -36,6 +36,10 @@ foreach($myarray as $value){
   <td>
   ".$res['RESPONSABLE'][$i]."
   </td>
+  <td>
+    <a href='#' class='btn btn-default btn-xs'><i class='fa fa-edit white'></i> Edit </a>
+    <a href='#' class='btn btn-default btn-xs'><i class='fa fa-times white'></i> Delete </a>
+  </td>
   </tr>";
   $i++;
 }
