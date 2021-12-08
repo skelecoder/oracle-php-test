@@ -154,9 +154,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">OBSERVATIONS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<div class="alert alert-default alert-mini">
-												<?php if($recommandation['OBSERVATIONS'] == ''){echo 'Néant'; }else{echo $recommandation['OBSERVATIONS'];} ?>
-											</div>
+											<?php if($recommandation['OBSERVATIONS'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo $recommandation['OBSERVATIONS'];} ?>
 										</div>
 									</div>
 
