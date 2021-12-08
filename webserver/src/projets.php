@@ -155,7 +155,7 @@ header("content-disposition: attachment;filename=Report.doc");
 										</div>
 										<div class="col-md-12 padding-20">
 											<div class="alert alert-default alert-mini">
-												<?php echo $recommandation['OBSERVATIONS']; ?>
+												<?php if($recommandation['OBSERVATIONS'] == ''){echo 'Néant'; }else{echo $recommandation['OBSERVATIONS'];} ?>
 											</div>
 										</div>
 									</div>
@@ -204,7 +204,7 @@ header("content-disposition: attachment;filename=Report.doc");
 					<div class="row margin-top-40">
 						<div class="col-md-4">
 							<p class="nomargin"><b>Ressources non budgétaires allouées:</b></p>
-							-
+							<?php echo $recommandation['RESSOURCES']; ?>
 						</div>
 						<div class="col-md-4">
 							<p class="nomargin"><b>Parties impliquées et responsable de la mise en œuvre:</b></p>
