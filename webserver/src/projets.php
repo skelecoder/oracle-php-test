@@ -75,7 +75,7 @@ header("content-disposition: attachment;filename=Report.doc");
 						<span class="bold" style="color:#000;">
 						<u>Code recommandation:</u>
 						</span>
-						<span class="font-lato bold text-black">REC001</span>
+						<span class="font-lato bold text-black"><?php echo $recommandation['CODE']; ?></span>
 					</h4>
 					<h4 class="width-700 nomargin" style="color:#000;"><span class="bold" style="color:#000;">
 						<u>La recommandation:</u> </span><?php echo $recommandation['TITLE_FR']; ?></h4>
@@ -84,7 +84,7 @@ header("content-disposition: attachment;filename=Report.doc");
 					<ol class="breadcrumb">
 						<li><a href="./index.php?lang=<?php echo $locale; ?>">Page d'accueil</a></li>
 						<li><a href="./axes.php?axe=1&lang=<?php echo $locale; ?>">La SONACOS (Décembre 2019)</a></li>
-						<li class="active text-black bold">REC001</li>
+						<li class="active text-black bold"><?php echo $recommandation['CODE']; ?></li>
 					</ol><!-- /breadcrumbs -->
 
 				</div>
@@ -99,7 +99,7 @@ header("content-disposition: attachment;filename=Report.doc");
 						<div class="col-lg-12 padding-20">
 							<div class="row padding-bottom-20">	
 								<div class="col-md-4 text-center" style="padding: 0 0 0 10px !important;">
-									<?php $percentage = 80; ?>
+									<?php $percentage = $recommandation['PERCENTAGE']; ?>
 									<div dir="ltr" style="width:150px; height:150px;" class="margin-top-10 piechart" data-color="<?php if($percentage < 100){echo '#F0AD4E'; }else{echo '#007631';} ?>" data-size="150" data-percent="<?php echo $percentage; ?>" data-width="15" data-animate="1000" data-trackcolor="#E7EED8">
 										<span class="size-25 font-lato weight-600 margin-bottom-0 text-black">
 											<span class="countTo bold font-raleway text-black" data-speed="1000"><?php echo $percentage; ?></span>%
@@ -115,7 +115,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<br>
 											<p class="nomargin text-primary bold">Date de démarrage prévisionnelle</p>
 											<div dir="ltr" class="label label-primary text-white font-lato bold">
-												02-07-2018
+												<?php echo $recommandation['START_DATE']; ?>
 											</div>
 										</div>
 										<div class="col-xs-6 text-center">
@@ -123,7 +123,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<br>
 											<p class="nomargin text-primary bold">Date d’achèvement prévisionnelle</p>
 											<div class="label label-success text-white font-lato bold">
-												31-12-2023
+												<?php echo $recommandation['END_DATE']; ?>
 											</div>
 										</div>
 									</div>
@@ -134,7 +134,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">RÉSULTATS ESCOMPTÉS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											Le disponible en semences en 2019/2020 a atteint près de 2,2 Millions de quintaux soit 80 % de l’objectif PMV à l’horizon 2020.
+											<?php echo $recommandation['ESCOMPTE']; ?>
 										</div>
 									</div>
 
@@ -144,7 +144,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">RÉSULTATS OBTENUS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											Le disponible en semences en 2019/2020 a atteint près de 2,2 Millions de quintaux soit 80 % de l’objectif PMV à l’horizon 2020.
+											<?php echo $recommandation['OBTENU']; ?>
 										</div>
 									</div>
 
@@ -155,7 +155,7 @@ header("content-disposition: attachment;filename=Report.doc");
 										</div>
 										<div class="col-md-12 padding-20">
 											<div class="alert alert-default alert-mini">
-												Néant
+												<?php echo $recommandation['OBSERVATIONS']; ?>
 											</div>
 										</div>
 									</div>
