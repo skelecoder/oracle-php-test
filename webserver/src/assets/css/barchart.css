@@ -1,0 +1,630 @@
+* {
+  box-sizing: border-box;
+}
+
+.chart {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  grid-column-gap: 15px;
+  height: 45vh;
+  width: 70vw;
+  padding: 5px 10px;
+}
+
+[class^=bar] {
+  padding: 5%;
+  border-radius: 5px 5px 0 0;
+  transition: all 0.6s ease;
+  background-color: #ff4136;
+  grid-row-start: 1;
+  grid-row-end: 101;
+}
+
+.bar-1 {
+  grid-row-start: 100;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-2 {
+  grid-row-start: 99;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-3 {
+  grid-row-start: 98;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-4 {
+  grid-row-start: 97;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-5 {
+  grid-row-start: 96;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-6 {
+  grid-row-start: 95;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-7 {
+  grid-row-start: 94;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-8 {
+  grid-row-start: 93;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-9 {
+  grid-row-start: 92;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-10 {
+  grid-row-start: 91;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-11 {
+  grid-row-start: 90;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-12 {
+  grid-row-start: 89;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-13 {
+  grid-row-start: 88;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-14 {
+  grid-row-start: 87;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-15 {
+  grid-row-start: 86;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-16 {
+  grid-row-start: 85;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-17 {
+  grid-row-start: 84;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-18 {
+  grid-row-start: 83;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-19 {
+  grid-row-start: 82;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-20 {
+  grid-row-start: 81;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-21 {
+  grid-row-start: 80;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-22 {
+  grid-row-start: 79;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-23 {
+  grid-row-start: 78;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-24 {
+  grid-row-start: 77;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-25 {
+  grid-row-start: 76;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-26 {
+  grid-row-start: 75;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-27 {
+  grid-row-start: 74;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-28 {
+  grid-row-start: 73;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-29 {
+  grid-row-start: 72;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-30 {
+  grid-row-start: 71;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-31 {
+  grid-row-start: 70;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-32 {
+  grid-row-start: 69;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-33 {
+  grid-row-start: 68;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-34 {
+  grid-row-start: 67;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-35 {
+  grid-row-start: 66;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-36 {
+  grid-row-start: 65;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-37 {
+  grid-row-start: 64;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-38 {
+  grid-row-start: 63;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-39 {
+  grid-row-start: 62;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-40 {
+  grid-row-start: 61;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-41 {
+  grid-row-start: 60;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-42 {
+  grid-row-start: 59;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-43 {
+  grid-row-start: 58;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-44 {
+  grid-row-start: 57;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-45 {
+  grid-row-start: 56;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-46 {
+  grid-row-start: 55;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-47 {
+  grid-row-start: 54;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-48 {
+  grid-row-start: 53;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-49 {
+  grid-row-start: 52;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-50 {
+  grid-row-start: 51;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-51 {
+  grid-row-start: 50;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-52 {
+  grid-row-start: 49;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-53 {
+  grid-row-start: 48;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-54 {
+  grid-row-start: 47;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-55 {
+  grid-row-start: 46;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-56 {
+  grid-row-start: 45;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-57 {
+  grid-row-start: 44;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-58 {
+  grid-row-start: 43;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-59 {
+  grid-row-start: 42;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-60 {
+  grid-row-start: 41;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-61 {
+  grid-row-start: 40;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-62 {
+  grid-row-start: 39;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-63 {
+  grid-row-start: 38;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-64 {
+  grid-row-start: 37;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-65 {
+  grid-row-start: 36;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-66 {
+  grid-row-start: 35;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-67 {
+  grid-row-start: 34;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-68 {
+  grid-row-start: 33;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-69 {
+  grid-row-start: 32;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-70 {
+  grid-row-start: 31;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-71 {
+  grid-row-start: 30;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-72 {
+  grid-row-start: 29;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-73 {
+  grid-row-start: 28;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-74 {
+  grid-row-start: 27;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-75 {
+  grid-row-start: 26;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-76 {
+  grid-row-start: 25;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-77 {
+  grid-row-start: 24;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-78 {
+  grid-row-start: 23;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-79 {
+  grid-row-start: 22;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-80 {
+  grid-row-start: 21;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-81 {
+  grid-row-start: 20;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-82 {
+  grid-row-start: 19;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-83 {
+  grid-row-start: 18;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-84 {
+  grid-row-start: 17;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-85 {
+  grid-row-start: 16;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-86 {
+  grid-row-start: 15;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-87 {
+  grid-row-start: 14;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-88 {
+  grid-row-start: 13;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-89 {
+  grid-row-start: 12;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-90 {
+  grid-row-start: 11;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-91 {
+  grid-row-start: 10;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-92 {
+  grid-row-start: 9;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-93 {
+  grid-row-start: 8;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-94 {
+  grid-row-start: 7;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-95 {
+  grid-row-start: 6;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-96 {
+  grid-row-start: 5;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-97 {
+  grid-row-start: 4;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-98 {
+  grid-row-start: 3;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-99 {
+  grid-row-start: 2;
+  color: black;
+  background-color: #F7C600;
+}
+
+.bar-100 {
+  grid-row-start: 1;
+  color: white;
+  background-color: #007631;
+}
+
+.bar-101 {
+  grid-row-start: 0;
+  color: white;
+  background-color: #007631;
+}
+
+/*# sourceMappingURL=barchart.css.map */

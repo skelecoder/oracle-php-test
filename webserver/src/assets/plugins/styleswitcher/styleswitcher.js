@@ -26,7 +26,7 @@ jQuery(document).ready(function() {
 				+ '<div id="switcher" class="hide hidden-xs">'
 				+ '	<div class="content-switcher">'
 				+ '		<h4>STYLE SWITCHER</h4>'
-/**
+
 				+ '		<ul class="list-unstyled">'
 				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'green\'); return false;" title="green" class="color"><img src="assets/plugins/styleswitcher/color_schemes/6.png" alt="" width="30" height="30" /></a></li>'
 				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'red\'); return false;" title="red" class="color"><img src="assets/plugins/styleswitcher/color_schemes/2.png" alt="" width="30" height="30" /></a></li>'
@@ -39,8 +39,15 @@ jQuery(document).ready(function() {
 				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'brown\'); return false;" title="brown" class="color"><img src="assets/plugins/styleswitcher/color_schemes/9.png" alt="" width="30" height="30" /></a></li>'
 				+ '			<li><a href="#" onclick="setActiveStyleSheet(\'lightgrey\'); return false;" title="lightgrey" class="color"><img src="assets/plugins/styleswitcher/color_schemes/10.png" alt="" width="30" height="30" /></a></li>'
 				+ '		</ul>'
-**/
+
 				+ '		<div class="margin-top-10 text-left">'
+
+				+ '			<div class="clearfix">'
+				+ '				<label><input class="dark_switch" type="radio" name="color_skin" id="is_light" value="light" checked="checked" /> Light</label>'
+				+ '				<label><input class="dark_switch" type="radio" name="color_skin" id="is_dark" value="dark" /> Dark <!--<small class="fsize11 styleColor">(BETA)</small>--></label>'
+				+ '			</div>'
+
+				+ '			<hr class="hidden-xs" />'
 
 				+ '			<div class="clearfix hidden-xs">'
 				+ '				<label><input class="boxed_switch" type="radio" name="layout_style" id="is_wide" value="wide" checked="checked" /> Wide</label>'
@@ -55,7 +62,7 @@ jQuery(document).ready(function() {
 				+ '			</div>'
 
 				+ '		</div>'
-/**
+
 				+ '		<p class="nomargin-bottom">Patterns for Boxed Version</p>'
 				+ '		<div>'
 				+ '			<button onclick="pattern_switch(\'none\');" class="pointer switcher_thumb"><img src="assets/images/patterns/none.jpg" width="27" height="27" alt="" /></button>'
@@ -72,7 +79,14 @@ jQuery(document).ready(function() {
 				+ '			<button onclick="pattern_switch(\'pattern9\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern9.png" width="27" height="27" alt="" /></button>'
 				+ '			<button onclick="pattern_switch(\'pattern10\');" class="pointer switcher_thumb"><img src="assets/images/patterns/pattern10.png" width="27" height="27" alt="" /></button>'
 				+ '		</div>'
-**/
+
+				+ '		<p class="nomargin-bottom">Images for Boxed Version</p>'
+				+ '		<button onclick="background_switch(\'none\');" class="pointer switcher_thumb"><img src="assets/images/demo/boxed_background/none.jpg" width="27" height="27" alt="" /></button>'
+				+ '		<button onclick="background_switch(\'assets/images/demo/boxed_background/1.jpg\');" class="pointer switcher_thumb"><img src="assets/images/demo/boxed_background/1_thumb.jpg" width="27" height="27" alt="" /></button>'
+				+ '		<button onclick="background_switch(\'assets/images/demo/boxed_background/2.jpg\');" class="pointer switcher_thumb"><img src="assets/images/demo/boxed_background/2_thumb.jpg" width="27" height="27" alt="" /></button>'
+				+ '		<button onclick="background_switch(\'assets/images/demo/boxed_background/3.jpg\');" class="pointer switcher_thumb"><img src="assets/images/demo/boxed_background/3_thumb.jpg" width="27" height="27" alt="" /></button>'
+				+ '		<button onclick="background_switch(\'assets/images/demo/boxed_background/4.jpg\');" class="pointer switcher_thumb"><img src="assets/images/demo/boxed_background/4_thumb.jpg" width="27" height="27" alt="" /></button>'
+
 				+ '		<hr />'
 
 				+ '		<div class="text-center">'
@@ -124,13 +138,41 @@ jQuery(document).ready(function() {
 			jQuery("#css_dark_skin").remove();
 			jQuery("head").append('<link id="css_dark_skin" href="assets/css/layout-dark.css" rel="stylesheet" type="text/css" title="dark" />');
 			createCookie("color_skin", 'dark', 365);
-			// jQuery("a.logo img").attr('src', 'assets/images/logo_dark.png');
+			jQuery("a.logo img").attr('src', 'assets/images/logo_light.png');
 		} else {
 			jQuery("#css_dark_skin").remove();
 			createCookie("color_skin", '', -1);
-			// jQuery("a.logo img").attr('src', 'assets/images/logo.png');
+			jQuery("a.logo img").attr('src', 'assets/images/logo_dark.png');
 		}
 	});
+
+
+
+	/**
+		RTL|LTR
+	**/
+	jQuery("input.rtl_switch").bind("click", function() {
+		var _direction = jQuery(this).attr('value');
+
+		if(_direction == 'rtl') {
+			jQuery("#rtl_ltr").remove();
+			jQuery("#rtl_ltr_b1").remove();
+			jQuery("#rtl_ltr_b2").remove();
+
+			jQuery("head").append('<link href="assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" id="rtl_ltr_b1" />');
+			jQuery("head").append('<link href="assets/plugins/bootstrap/RTL/bootstrap-flipped.min.css" rel="stylesheet" type="text/css" id="rtl_ltr_b2" />');
+			jQuery("head").append('<link href="assets/css/layout-RTL.css" rel="stylesheet" type="text/css" id="rtl_ltr" />');
+
+			createCookie("_direction", 'rtl', 365);
+		} else {
+			jQuery("#rtl_ltr").remove();
+			jQuery("#rtl_ltr_b1").remove();
+			jQuery("#rtl_ltr_b2").remove();
+
+			createCookie("_direction", '', -1);
+		}
+	});
+
 
 	/**
 		LAYOUT STYLE [wide|boxed]
@@ -163,29 +205,6 @@ jQuery(document).ready(function() {
 
 	});
 
-
-	/**
-		RTL|LTR
-	**/
-	jQuery("input.rtl_switch").bind("click", function() {
-		var _direction = jQuery(this).attr('value');
-
-		if(_direction == 'rtl') {
-			jQuery("#css_dark_skin").remove();
-
-			jQuery("head").append('<link id="rtl_ltr_b1" href="assets/plugins/bootstrap/RTL/bootstrap-rtl.min.css" rel="stylesheet" type="text/css" title="rtl" />');
-			jQuery("head").append('<link id="rtl_ltr_b2" href="assets/plugins/bootstrap/RTL/bootstrap-flipped.min.css" rel="stylesheet" type="text/css" title="rtl" />');
-			jQuery("head").append('<link id="rtl_ltr" href="assets/css/layout-RTL.css" rel="stylesheet" type="text/css" title="rtl" />');
-
-			createCookie("_direction", 'rtl', 365);
-		} else {
-			jQuery("#rtl_ltr").remove();
-			jQuery("#rtl_ltr_b1").remove();
-			jQuery("#rtl_ltr_b2").remove();
-
-			createCookie("_direction", '', -1);
-		}
-	});
 
 });
 

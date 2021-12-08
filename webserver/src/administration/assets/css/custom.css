@@ -1,0 +1,66 @@
+.borderRed {
+	border: 1px red dotted!important;
+}
+
+.shadow {
+	-webkit-box-shadow: 4px 4px 12px 0px rgba(51,51,51,0.5);
+	-moz-box-shadow: 4px 4px 12px 0px rgba(51,51,51,0.5);
+	box-shadow: 4px 4px 12px 0px rgba(51,51,51,0.5);
+}
+
+.form-control {
+	border:#ccc 1px solid;
+}
+
+.note-toolbar.panel-heading {
+	padding: 5px 15px!important;
+}
+
+label{
+	cursor: pointer;
+}
+
+input[type="checkbox"], input[type="radio"]{
+	/*position: absolute;*/
+	right: 45px!important;
+	top: 3px!important;
+}
+
+/*Check box*/
+input[type="checkbox"] + .label-text:before{
+	content: "\f096";
+	font-family: "FontAwesome";
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing:antialiased;
+	width: 1em;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+input[type="checkbox"]:checked + .label-text:before{
+	content: "\f14a";
+	color: #ED1E79;
+	animation: effect 250ms ease-in;
+}
+
+input[type="checkbox"]:disabled + .label-text{
+	color: #aaa;
+}
+
+input[type="checkbox"]:disabled + .label-text:before{
+	content: "\f0c8";
+	color: #ccc;
+}
+
+
+@keyframes effect{
+	0%{transform: scale(0);}
+	25%{transform: scale(1.3);}
+	75%{transform: scale(1.4);}
+	100%{transform: scale(1);}
+}

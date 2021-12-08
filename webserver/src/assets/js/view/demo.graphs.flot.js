@@ -1,4 +1,4 @@
-/** Graphs : Morris
+/** Graphs : Flot
 	graphs-flot.html
 
 

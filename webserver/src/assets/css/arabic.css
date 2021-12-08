@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'DroidArabicNaskhBold';
+        src: url('../fonts/DroidArabicNaskh/DroidNaskh-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+      }
+
+@font-face {
+    font-family: 'DroidArabicNaskhRegular';
+        src: url('../fonts/DroidArabicNaskh/DroidNaskh-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
+ /* The following rules are deprecated. */ 
+
+@font-face {
+    font-family: 'Droid Arabic Naskh';
+        src: url('../fonts/DroidArabicNaskh/DroidNaskh-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+      }
+
+
+
+@font-face {
+    font-family: 'Droid Arabic Naskh';
+        src: url('../fonts/DroidArabicNaskh/DroidNaskh-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+      }
+
+a, p, h1, h2, h3, h4, h5, h6, a, div {
+	/*font-family: 'DroidArabicKufiRegular'; */
+	font-family: 'Droid Arabic Naskh', serif!important;
+	font-weight: normal; 
+	font-style: normal; 
+}	
+
+.panel>.panel-heading strong {
+	font-family: 'Droid Arabic Naskh', serif!important;
+	font-weight: bold;
+}

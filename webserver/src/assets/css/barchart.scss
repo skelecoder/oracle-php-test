@@ -1,0 +1,41 @@
+* { box-sizing: border-box; }
+
+.chart {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(100, 1fr);
+  grid-column-gap: 15px;
+  height: 45vh;
+  width: 70vw;
+  padding: 5px 10px;
+}
+
+[class^="bar"] {
+  padding:5%;
+  border-radius: 5px 5px 0 0;
+  transition: all .6s ease;
+  background-color: #ff4136;
+  grid-row-start: 1;
+  grid-row-end: 101;
+}
+
+$totalRows: 101;
+
+@mixin chartValue($data) {
+  $result: $totalRows - $data;
+  grid-row-start: $result;
+  @if($data < 100) {
+      color: black;
+      background-color: #F7C600; 
+  }
+  @else {
+      color: white;
+      background-color: #007631; 
+  }
+}
+
+@for $i from 1 through $totalRows {
+  .bar-#{$i} {
+    @include chartValue($i);
+  }
+}

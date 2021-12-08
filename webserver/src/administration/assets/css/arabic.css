@@ -1,0 +1,13 @@
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
+a, p, h1, h2, h3, h4, h5, h6, a, div {
+	/*font-family: 'DroidArabicKufiRegular'; */
+	font-family: 'Droid Arabic Kufi', serif!important;
+	font-weight: normal; 
+	font-style: normal; 
+}	
+
+.panel>.panel-heading strong {
+	font-family: 'Droid Arabic Kufi', serif!important;
+	font-weight: bold;
+}
