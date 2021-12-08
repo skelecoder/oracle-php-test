@@ -206,14 +206,11 @@ header("content-disposition: attachment;filename=Report.doc");
 						</div>
 						<div class="col-md-4">
 							<p class="nomargin"><b>Parties impliquées et responsable de la mise en œuvre:</b></p>
-							- Management<br>
-							- Pôle Commercial<br>
-							- Pôle Technique<br>
-							- Centres régionaux
+							<?php echo $recommandation['RESPONSABLE']; ?>
 						</div>
 						<div class="col-md-4">
 							<p class="nomargin"><b>Actions entreprises par l’organisme pour l’implémentation des recommandations:</b></p>
-							Chaque campagne, la SONACOS engage les superficies nécessaires pour assurer un disponible satisfaisant en semences, restant en phase avec les objectifs tracés par le PMV
+							<?php echo $recommandation['ACTIONS']; ?>
 						</div>
 					</div>
 					
