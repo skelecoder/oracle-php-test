@@ -78,7 +78,7 @@ header("content-disposition: attachment;filename=Report.doc");
 						<span class="font-lato bold text-black"><?php echo $recommandation['CODE']; ?></span>
 					</h4>
 					<h4 class="width-700 nomargin" style="color:#000;"><span class="bold" style="color:#000;">
-						<u>La recommandation:</u> </span><?php echo $recommandation['TITLE_FR']; ?></h4>
+						<u>La recommandation:</u> </span><?php echo nl2br(stripcslashes($recommandation['TITLE_FR'])); ?></h4>
 
 					<!-- breadcrumbs -->
 					<ol class="breadcrumb">
@@ -134,7 +134,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">RÉSULTATS ESCOMPTÉS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<?php if($recommandation['ESCOMPTE'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo $recommandation['ESCOMPTE'];} ?>
+											<?php if($recommandation['ESCOMPTE'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['ESCOMPTE']);} ?>
 										</div>
 									</div>
 
@@ -144,7 +144,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">RÉSULTATS OBTENUS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<?php if($recommandation['OBTENU'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo $recommandation['OBTENU'];} ?>
+											<?php if($recommandation['OBTENU'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['OBTENU']));} ?>
 										</div>
 									</div>
 
@@ -154,7 +154,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">OBSERVATIONS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<?php if($recommandation['OBSERVATIONS'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo $recommandation['OBSERVATIONS'];} ?>
+											<?php if($recommandation['OBSERVATIONS'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['OBSERVATIONS']));} ?>
 										</div>
 									</div>
 
@@ -202,15 +202,15 @@ header("content-disposition: attachment;filename=Report.doc");
 					<div class="row margin-top-40">
 						<div class="col-md-4">
 							<p class="nomargin"><b>Ressources non budgétaires allouées:</b></p>
-							<?php echo $recommandation['RESSOURCES']; ?>
+							<?php echo nl2br(stripcslashes(nl2br(stripcslashes($recommandation['RESSOURCES'])); ?>
 						</div>
 						<div class="col-md-4">
 							<p class="nomargin"><b>Parties impliquées et responsable de la mise en œuvre:</b></p>
-							<?php echo $recommandation['RESPONSABLE']; ?>
+							<?php echo nl2br(stripcslashes($recommandation['RESPONSABLE'])); ?>
 						</div>
 						<div class="col-md-4">
 							<p class="nomargin"><b>Actions entreprises par l’organisme pour l’implémentation des recommandations:</b></p>
-							<?php echo $recommandation['ACTIONS']; ?>
+							<?php echo nl2br(stripcslashes($recommandation['ACTIONS'])); ?>
 						</div>
 					</div>
 					
