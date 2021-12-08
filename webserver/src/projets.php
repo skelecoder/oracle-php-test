@@ -134,7 +134,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">RÉSULTATS ESCOMPTÉS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<?php echo $recommandation['ESCOMPTE']; ?>
+											<?php if($recommandation['ESCOMPTE'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo $recommandation['ESCOMPTE'];} ?>
 										</div>
 									</div>
 
@@ -144,7 +144,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">RÉSULTATS OBTENUS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<?php echo $recommandation['OBTENU']; ?>
+											<?php if($recommandation['OBTENU'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo $recommandation['OBTENU'];} ?>
 										</div>
 									</div>
 
