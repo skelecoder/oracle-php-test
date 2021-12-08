@@ -1,3 +1,10 @@
+<?php include_once 'functions.php'; ?>
+<?php	
+	if(isset($_GET['code'])) {
+		$recommandation_code = htmlentities($_GET['code']);
+	}
+  
+?>
 <?php
 /*header("Content-Type: application/vnd.ms-word");
 header("Expires: 0");
@@ -12,7 +19,9 @@ header("content-disposition: attachment;filename=Report.doc");
 	<head>
 		<?php include 'meta.php'; ?>
 		<?php include 'header.php'; ?>
-		
+		<?php 
+			$recommandation = oci_fetch_array(getRecommandationByCode($recommandation_code), OCI_ASSOC+OCI_RETURN_NULLS); 
+		?>
 
 		<style>
 			.amcharts-chart-div > a {
@@ -69,7 +78,7 @@ header("content-disposition: attachment;filename=Report.doc");
 						<span class="font-lato bold text-black">REC001</span>
 					</h4>
 					<h4 class="width-700 nomargin" style="color:#000;"><span class="bold" style="color:#000;">
-						<u>La recommandation:</u> </span>Déployer plus d’efforts pour pouvoir atteindre ou s’approcher des objectifs tracés dans le cadre du PMV en matière de superficie de multiplication</h4>
+						<u>La recommandation:</u> </span><?php echo $recommandation['TITLE_FR']; ?></h4>
 
 					<!-- breadcrumbs -->
 					<ol class="breadcrumb">
