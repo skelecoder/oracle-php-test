@@ -201,7 +201,7 @@ header("content-disposition: attachment;filename=Report.doc");
 					<div class="row margin-top-40">
 						<div class="col-md-4">
 							<p class="nomargin"><b>Ressources non budgétaires allouées:</b></p>
-							<?php echo nl2br(stripcslashes(nl2br(stripcslashes($recommandation['RESSOURCES'])))); ?>
+							<?php echo nl2br(stripcslashes($recommandation['RESSOURCES'])); ?>
 						</div>
 						<div class="col-md-4">
 							<p class="nomargin"><b>Parties impliquées et responsable de la mise en œuvre:</b></p>
