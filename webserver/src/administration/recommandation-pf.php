@@ -92,6 +92,69 @@
 					</div>
 
 					<div class="row">
+							<div class="col-lg-12">
+								<div id="panel-misc-portlet-r5" class="panel panel-default">
+
+									<div class="panel-heading">
+										<span class="elipsis"><!-- panel title -->
+											<strong>Consistance (détail) des actions</strong>
+										</span>
+										<ul class="options pull-right relative list-unstyled">
+											<li><a href="actions-recommandations.php?recommandationId=<?php echo $recommandation_id;?>" class="btn btn-primary btn-xs white"><i class="fa fa-edit"></i> Gestion des actions</a></li>
+										</ul>
+									</div>
+									<!-- panel content -->
+									<div class="panel-body">
+										<div class="table-responsive">
+											<table class="table table-bordered table-striped">
+												<thead>
+													<tr>
+														<th>Consistance (détail) de l’action</th>
+														<th class="width-150">Date de démarrage</th>
+														<th class="width-150">Date d’achèvement constatée ou estimée</th>
+														<th>Budget alloué</th>
+													</tr>
+												</thead>
+												<tbody>
+													<?php 
+														$actions = getActionsByRecommandationId($recommandation_id); 
+														while (($action = oci_fetch_array($actions, OCI_ASSOC)) != false) {
+													?>				
+													<tr>
+														<td><?php echo nl2br(stripcslashes($action['TITLE_FR'])); ?></td>
+														<td>
+															<?php if($action['START_DATE'] == '0000-00-00') {
+																echo '';
+															}else{
+																echo date_format(date_create($action['START_DATE']),"d-m-Y");
+															} ?>
+														</td>
+														<td>
+															<?php if($action['END_DATE'] == '0000-00-00') {
+																echo '';
+															}else{
+																echo date_format(date_create($action['END_DATE']),"d-m-Y");
+															} ?>
+														</td>
+														<td><?php echo nl2br(stripcslashes($action['BUDGET_FR'])); ?></td>
+													</tr>
+													<?php } ?>
+													<tr>
+														<td colspan="4" class="text-center">
+															<?php if(oci_num_rows($actions) == 0) { echo 'pas de données'; } ?>
+														</td>
+													</tr>
+													
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<!-- /panel content -->
+								</div>
+							</div>
+						</div>
+
+					<div class="row">
 						<div class="col-lg-12">
 							<div id="panel-misc-portlet-r5" class="panel panel-default">
 
