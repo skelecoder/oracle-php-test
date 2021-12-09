@@ -3,7 +3,6 @@
 	if(isset($_GET['code'])) {
 		$recommandation_code = htmlentities($_GET['code']);
 	}
-  
 ?>
 <?php
 /*header("Content-Type: application/vnd.ms-word");
@@ -228,14 +227,17 @@ header("content-disposition: attachment;filename=Report.doc");
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td class="table-cell-green">La planification annuelle en termes de superficies dédiées à la multiplication tient compte des stocks de report  de fin de campagne, des capacités industrielles disponibles ainsi que des objectifs à atteindre en termes de disponibilités de semences.</td>
-											<td class="table-cell-green text-center size-12 bold">
-																							</td>
-											<td class="table-cell-green text-center size-12 bold">
-																							</td>
-											<td class="table-cell-green"></td>
-										</tr>
+										<?php
+											$actions = getActionsByRecommandationId($recommandation['ID']);
+											while (($action = oci_fetch_array($actions, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+										?>
+											<tr>
+												<td class="table-cell-green"><?php echo nl2br(stripcslashes($action['TITLE_FR'])); ?></td>
+												<td class="table-cell-green text-center size-12 bold"><?php echo $action['START_DATE']; ?></td>
+												<td class="table-cell-green text-center size-12 bold"><?php echo $action['END_DATE']; ?></td>
+												<td class="table-cell-green"><?php echo nl2br(stripcslashes($action['BUDGET_FR'])); ?></td>
+											</tr>
+										<?php } ?>
 									</tbody>
 								</table>
 							</div>

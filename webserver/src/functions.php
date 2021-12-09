@@ -22,4 +22,17 @@
 		oci_close($db);
 		return($stid);
 	}
+	
+	function getActionsByRecommandationId($id){
+		include 'connect_db.php';
+		
+		$sql = 'SELECT * FROM actions WHERE RECOMMANDATION_ID = :id';
+		$stid = oci_parse($db, $sql);
+
+		oci_bind_by_name($stid, ":id", $id);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
 ?>
