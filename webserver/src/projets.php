@@ -134,7 +134,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">RÉSULTATS ESCOMPTÉS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<?php if($recommandation['ESCOMPTE'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['ESCOMPTE']);} ?>
+											<?php if($recommandation['ESCOMPTE'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['ESCOMPTE']));} ?>
 										</div>
 									</div>
 
