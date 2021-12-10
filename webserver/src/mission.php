@@ -1,5 +1,8 @@
+<?php include_once 'functions.php'; ?>
 <?php
-	$mission_id = htmlentities($_GET['id']);
+	if(isset($_GET['id'])) {
+		$mission_id = htmlentities($_GET['id']);
+	}
 ?>
 <!DOCTYPE html>
 <!--[if IE 8]>			<html class="ie ie8"> <![endif]-->
@@ -9,7 +12,9 @@
 		<?php include 'meta.php'; ?>
 
 		<?php include 'header.php'; ?>
-		
+		<?php 
+			$mission = oci_fetch_array(getMissionById($mission_id), OCI_ASSOC+OCI_RETURN_NULLS); 
+		?>
 		<style>
 			
 			.stripe-divisor {
@@ -41,8 +46,8 @@
 			<section class="page-header page-header-xs alternate">
 				<div class="container">
 					<div class="col-lg-8">
-						<h1 class="bold">La SONACOS (Décembre 2019)</h1>
-						<p>Il s’agit de la refonte des structures administratives organisationnelles de telle sorte qu’elle permettra aux différents départements ministériels et services administratifs, au niveau central et local, d’assurer la mise en œuvre efficace et performante des politiques publiques et de fournir les services publics en respectant les normes de qualité aux usagers.</p>
+						<h1 class="bold"><?php echo nl2br(stripcslashes($mission['TITLE_FR'])); ?></h1>
+						<p><?php echo nl2br(stripcslashes($mission['DESCRIPTION_FR'])); ?></p>
 					</div>
 
 					<!-- breadcrumbs -->
@@ -67,7 +72,7 @@
 								<div class="panel panel-default" style="background:#1B5829;">
 									<div class="panel-body text-center">
 										<p class="nomargin size-15 uppercase text-white bold">
-											NOMBRE DES RECOMMANDATIONS: <span class="font-lato bold">6</span>
+											NOMBRE DES RECOMMANDATIONS: <span id="rec_count" class="font-lato bold"></span>
 										</p>
 									</div>
 								</div>
@@ -116,76 +121,39 @@
 										</tr>
 									</thead>
 									<tbody>
-                    <tr>
-                      <td class="table-cell-green text-center bold">REC001</td>
-											<td class="table-cell-green">
-												<a href="./projets.php?lang=fr&amp;code=REC001">
-													 Déployer plus d’efforts pour pouvoir atteindre ou s’approcher des objectifs tracés dans le cadre du PMV en matière de superficie de multiplication												</a>
-											</td>
-											<td class="table-cell-green text-center size-12 bold">
-												Février 2019																							</td>
-											<td class="table-cell-green text-center size-12 bold">
-												Décembre 2021																							</td>
-											<td class="table-cell-green text-center">
-																								<span class="label label-danger">
-													Non entamée												</span>
-											</td>
-											<td class="table-cell-green">
-												0 %
-												<div class="progress progress-xs">
-													<div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%; min-width: 0em; background:#5CB85C;">
-														<span class="sr-only">100% Complete</span>
+										<?php
+											$recommandations = getRecommandationsByMissionId($mission_id);
+											while (($recommandation = oci_fetch_array($recommandations, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+										?>
+											<tr>
+												<td class="table-cell-green text-center bold"><?php echo nl2br(stripcslashes($recommandation['CODE'])); ?></td>
+												<td class="table-cell-green">
+													<?php echo "<a href='./projets.php?lang=".$locale."&amp;code=".$recommandation['CODE']."'>"; ?>
+													<?php echo nl2br(stripcslashes($recommandation['TITLE_FR'])); ?>	</a>											
+												</td>
+												<td class="table-cell-green text-center size-12 bold">
+													<?php echo nl2br(stripcslashes($recommandation['START_DATE'])); ?>
+												</td>
+												<td class="table-cell-green text-center size-12 bold">
+													<?php echo nl2br(stripcslashes($recommandation['END_DATE'])); ?>
+												</td>
+												<td class="table-cell-green text-center">
+													<?php $percentage = $recommandation['PERCENTAGE']; ?>
+													<?php list($etat, $label) = ( $percentage == 0 ) ? ['Non entamée','danger']: ( $percentage  == 100 ? ['Achevée','success'] : ['Partiellement réalisée','warning'] ); ?>
+													<span class="label label-<?php echo $label; ?>"><?php echo $etat; ?></span>
+												</td>
+												<td class="table-cell-green">
+													<?php echo $percentage; ?> %
+													<div class="progress progress-xs">
+														<div class="progress-bar progress-bar-<?php echo $label; ?>" role="progressbar" aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percentage; ?>%; min-width: 0em;">
+															<span class="sr-only"><?php echo $percentage ?>% Complete</span>
+														</div>
 													</div>
-												</div>
-											</td>
-										</tr>
-                    <tr>
-                      <td class="table-cell-green text-center bold">REC002</td>
-											<td class="table-cell-green">
-												<a href="./projets.php?lang=fr&amp;code=REC002">
-													 Veiller à l’obtention des variétés d’orge répondant aux exigences des multiplicateurs, au choix des régions de production appropriées en plus d’un encadrement  adéquat des multiplicateurs												</a>
-											</td>
-											<td class="table-cell-green text-center size-12 bold">
-												Juin 2019																							</td>
-											<td class="table-cell-green text-center size-12 bold">
-												Février 2020																							</td>
-											<td class="table-cell-green text-center">
-																								<span class="label label-warning">
-													Partiellement réalisée												</span>
-											</td>
-											<td class="table-cell-green">
-												65 %
-												<div class="progress progress-xs">
-													<div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%; min-width: 0em; background:#F0AD4E;">
-														<span class="sr-only">65% Complete</span>
-													</div>
-												</div>
-											</td>
-										</tr>
-                    <tr>
-                      <td class="table-cell-green text-center bold">REC003</td>
-											<td class="table-cell-green">
-												<a href="./projets.php?lang=fr&amp;code=REC003">
-													 Allouer plus d’attention au développement de la multiplication des Fourragères et légumineuses pour concorder avec les objectifs du PMV												</a>
-											</td>
-											<td class="table-cell-green text-center size-12 bold">
-												Novembre 2020																							</td>
-											<td class="table-cell-green text-center size-12 bold">
-												Décembre 2022																							</td>
-											<td class="table-cell-green text-center">
-																								<span class="label label-warning">
-													Partiellement réalisée												</span>
-											</td>
-											<td class="table-cell-green">
-												80 %
-												<div class="progress progress-xs">
-													<div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%; min-width: 0em; background:#F0AD4E;">
-														<span class="sr-only">80% Complete</span>
-													</div>
-												</div>
-											</td>
-										</tr>
-                  </tbody>
+												</td>
+											</tr>
+										<?php } ?>
+										<?php echo '<script type="text/javascript">' . 'document.getElementById("rec_count").innerHTML = ' . oci_num_rows($recommandations) . ';</script>'; ?>
+                  					</tbody>
 								</table>
 							</div>
 							
