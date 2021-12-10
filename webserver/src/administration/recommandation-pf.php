@@ -186,23 +186,35 @@
 								</div>
 									
 								<div class="row margin-top-20">
-									<div class="col-lg-12">
-										<p><b>Résultats escomptés</b></p>
-										<div class="margin-bottom-20" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['ESCOMPTE'])); ?></div>
+									<div class="col-lg-6">
+										<p><b>Résultats escomptés (Français)</b></p>
+										<div class="margin-bottom-20" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['ESCOMPTE_FR'])); ?></div>
+									</div>
+									<div class="col-lg-6">
+										<p><b>Résultats escomptés (العربية)</b></p>
+										<div class="margin-bottom-20" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['ESCOMPTE_AR'])); ?></div>
 									</div>
 								</div>
 									
 								<div class="row">
-									<div class="col-lg-12">
-										<p><b>Résultats obtenus</b></p>
-										<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBTENU'])); ?></div>
+									<div class="col-lg-6">
+										<p><b>Résultats obtenus (Français)</b></p>
+										<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBTENU_FR'])); ?></div>
+									</div>
+									<div class="col-lg-6">
+										<p><b>Résultats obtenus (العربية)</b></p>
+										<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBTENU_AR'])); ?></div>
 									</div>
 								</div>
 									
 									<div class="row">
-										<div class="col-lg-12">
-											<p><b>Obsérvations</b></p>
-											<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBSERVATIONS'])); ?></div>
+										<div class="col-lg-6">
+											<p><b>Obsérvations (Français)</b></p>
+											<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBSERVATIONS_FR'])); ?></div>
+										</div>
+										<div class="col-lg-6">
+											<p><b>Obsérvations (العربية)</b></p>
+											<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBSERVATIONS_AR'])); ?></div>
 										</div>
 									</div>
 

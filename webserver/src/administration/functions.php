@@ -1,14 +1,15 @@
 <?php
 
-	function getRecommandations(){
+	function getRecommandations($archive){
 		include 'connect_db.php';
 		
-		$s = oci_parse($db, 'select * from recommandations');
+		$stid = oci_parse($db, 'select * from recommandations WHERE archive=:archive');
 
-		oci_execute($s);
+		oci_bind_by_name($stid, ":archive", $archive);
+		oci_execute($stid);
 		
 		oci_close($db);
-		return($s);
+		return($stid);
 	}
 
 	function getRecommandationById($id){
