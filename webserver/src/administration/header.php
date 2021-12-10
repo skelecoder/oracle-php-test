@@ -35,6 +35,11 @@
 								<span>Recommandations</span>
 							</a>
 						</li>
+						<li class="<?php active('missions.php');?>">
+							<a href="./missions.php">
+								<span>Missions</span>
+							</a>
+						</li>
 					</ul>
 
 					
