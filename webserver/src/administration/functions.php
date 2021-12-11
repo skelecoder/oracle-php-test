@@ -63,4 +63,30 @@
 		return($stid);
 	}
 
+	function getAdministrationsByNiveau($niveau){
+		include 'connect_db.php';
+		
+		$sql = 'SELECT * FROM administrations WHERE niveau = :niveau';
+		$stid = oci_parse($db, $sql);
+
+		oci_bind_by_name($stid, ":niveau", $niveau);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
+
+	function getAdministrationById($id){
+		include 'connect_db.php';
+		
+		$sql = 'SELECT * FROM administrations WHERE id = :id';
+		$stid = oci_parse($db, $sql);
+
+		oci_bind_by_name($stid, ":id", $id);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
+
 ?>

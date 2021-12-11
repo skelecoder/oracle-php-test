@@ -40,6 +40,11 @@
 								<span>Missions</span>
 							</a>
 						</li>
+						<li class="<?php active('administrations.php');?>">
+							<a href="./administrations.php?niveau=1">
+								<span>Administrations</span>
+							</a>
+						</li>
 					</ul>
 
 					

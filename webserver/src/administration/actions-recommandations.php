@@ -167,7 +167,7 @@
 			</section>
 			<!-- /MIDDLE -->
 			
-			<!-- MODIFIER FINANCEUR -->
+			<!-- MODIFIER ACTION -->
 			<div data-action-id="" id="edit-modal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-md">
 					<div class="modal-content">
@@ -232,9 +232,9 @@
 					</div>
 				</div>
 			</div>
-			<!-- MODIFIER FINANCEUR -->
+			<!-- MODIFIER ACTION -->
 			
-			<!-- SUPPRIMER FINANCEUR -->
+			<!-- SUPPRIMER ACTION -->
 			<div id="delete-modal" data-id="" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
@@ -263,7 +263,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- SUPPRIMER FINANCEUR -->
+			<!-- SUPPRIMER ACTION -->
 
 		</div>
 	
