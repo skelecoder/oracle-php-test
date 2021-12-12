@@ -22,6 +22,7 @@ if ( isset($_POST) && (!empty($_POST['username'])) && (!empty($_POST['password']
 if ($loginOK) {
   session_start();
   $_SESSION['id'] = $data['ID'];
+  $_SESSION['administration_id'] = $data['ADMINISTRATION_ID'];
   $_SESSION['login'] = $data['USERNAME'];
   $_SESSION['type'] = $data['TYPE'];
   $_SESSION['nom'] = $data['NOM'];
@@ -35,7 +36,7 @@ if ($loginOK) {
 		}else if($_SESSION['type'] == 'PDM') {
 			$url = './missions.php';	
 		}else if($_SESSION['type'] == 'PF') {
-			$url = './missions.php';	
+			$url = './missions-pf.php';	
 		}
 	}
 	$res = array(

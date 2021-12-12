@@ -166,5 +166,19 @@
 		oci_close($db);
 		return($stid);
 	}
+	
+	function getMissionsByAdminId($archive, $administration_id){
+		include 'connect_db.php';
+		
+		$sql = 'select ma.id as id, m.title_fr as titre_mission from missions_administrations ma LEFT JOIN missions m ON m.id=ma.mission_id AND m.archive=:archive WHERE ma.administration_id=:administration_id';
+		$stid = oci_parse($db, $sql);
+
+		oci_bind_by_name($stid, ":archive", $archive);
+		oci_bind_by_name($stid, ":administration_id", $administration_id);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
 
 ?>

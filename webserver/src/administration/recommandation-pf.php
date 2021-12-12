@@ -1,4 +1,4 @@
-<?php include_once 'functions.php'; ?>
+<?php include_once 'checking-pf.php'; ?>
 
 <?php	
 	if(isset($_GET['id'])) {
@@ -63,6 +63,13 @@
 									<fieldset>
 										<!-- panel content -->
 										<div class="panel-body">
+											<div class="col-lg-2">
+												<div class="form-group">
+													<label>Pourcentage d'avancement</label>
+													<input type="number" name="percentage" class="form-control" name="ressources" value="<?php echo stripcslashes($recommandation['PERCENTAGE']); ?>">
+												</div>
+											</div>
+
 											<div class="col-lg-12">
 												<div class="form-group">
 													<label>Ressources non budgétaires allouées</label>

@@ -1,4 +1,4 @@
-<?php include_once 'checking-pdm.php'; ?>
+<?php include_once 'checking-pf.php'; ?>
 
 <!doctype html>
 <html lang="en-US">
@@ -62,18 +62,13 @@
 											</thead>
 											<tbody>
 												<?php
-													if(isset($_SESSION['login']) and ($_SESSION['type']=='PDM')) { 
-														$missions = getMissionsByUserId(0, $_SESSION['id']);
-													}else if(isset($_SESSION['login']) and ($_SESSION['type']=='ADMIN')) {
-														$missions = getMissions(0);
-													}
-													while (($mission = oci_fetch_array($missions, OCI_ASSOC)) != false) {
+													$missions_admins = getMissionsByAdminId(0, $_SESSION['administration_id']);
+													while (($mission_admin = oci_fetch_array($missions_admins, OCI_ASSOC)) != false) {
 												?>
 												<tr>
-													<td class="table-cell"><?php echo stripcslashes($mission['TITLE_FR']); ?></td>
+													<td class="table-cell"><?php echo stripcslashes($mission_admin['TITRE_MISSION']); ?></td>
 													<td>
-														<a href="./edit-mission.php?id=<?php echo $mission['ID']; ?>" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Modifier</a>
-														<a onclick="archiveMission(<?php echo $mission['ID']; ?>);" class="btn btn-xs btn-warning"><i class="fa fa-close"></i> Archiver</a>
+														<a href="./recommandations.php?mission_admin_id=<?php echo $mission_admin['ID']; ?>" class="btn btn-xs btn-primary"><i class="fa fa-eye"></i> Consulter</a>
 													</td>
 												</tr>
 												<?php } ?>

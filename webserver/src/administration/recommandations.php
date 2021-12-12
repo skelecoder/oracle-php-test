@@ -34,7 +34,10 @@
 
 				<!-- page title -->
 				<header id="page-header">
+					<?php if(isset($_SESSION['login']) and ($_SESSION['type']=='ADMIN' or $_SESSION['type']=='PDM')) { ?>
 					<a href="new-recommandation.php?mission_admin_id=<?php echo $mission_admin_id; ?>" class="btn btn-sm btn-green pull-right"><i class="fa fa-plus"></i> Ajouter une recommandation</a>
+					<?php } ?>
+
 					<h1>Mission: <?php echo stripcslashes($mission_id_administration_id['TITRE_MISSION']); ?></h1>
 					<ol class="breadcrumb">
 						<li class="active">Organisme controlé: <?php echo stripcslashes($mission_id_administration_id['TITRE_ADMIN']); ?></li>
@@ -49,7 +52,11 @@
 						
 						<div class="row margin-bottom-20">
 							<div class="col-lg-12">
+								<?php if(isset($_SESSION['login']) and ($_SESSION['type']=='ADMIN' or $_SESSION['type']=='PDM')) { ?>
 								<a class="btn btn-default btn-xs" href="./edit-mission.php?id=<?php echo $mission_id_administration_id['MISSION_ID']; ?>"><< Retour à la mission</a>
+								<?php }else if(isset($_SESSION['login']) and ($_SESSION['type']=='PF')) { ?>
+									<a class="btn btn-default btn-xs" href="./missions-pf.php"><< Retour à la liste des missions</a>
+								<?php } ?>
 							</div>
 						</div>
 
@@ -92,8 +99,11 @@
 													</td>
 													<td>
 														<a href="./recommandation-pf.php?id=<?php echo $recommandation['ID']; ?>" class="btn btn-xs btn-primary"><i class="fa fa-eye"></i> Consulter</a>
-														<a href="./edit-recommandation.php?id=<?php echo $recommandation['ID']; ?>" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Modifier</a>
-														<a onclick="archiveRecommandation(<?php echo $recommandation['ID']; ?>);" class="btn btn-xs btn-warning"><i class="fa fa-close"></i> Archiver</a>
+
+														<?php if(isset($_SESSION['login']) and ($_SESSION['type']=='ADMIN' or $_SESSION['type']=='PDM')) { ?>
+															<a href="./edit-recommandation.php?id=<?php echo $recommandation['ID']; ?>" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Modifier</a>
+															<a onclick="archiveRecommandation(<?php echo $recommandation['ID']; ?>);" class="btn btn-xs btn-warning"><i class="fa fa-close"></i> Archiver</a>
+															<?php } ?>
 													</td>
 												</tr>
 												<?php } ?>

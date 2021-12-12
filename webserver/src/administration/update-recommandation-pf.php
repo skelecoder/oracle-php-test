@@ -5,14 +5,25 @@
 			$id = $_POST['id'];
 			// code
 			$ressources = $_POST['ressources'];
+			$responsable = $_POST['responsable'];
+			$actions = $_POST['actions'];
+			$percentage = $_POST['percentage'];
 
 			$errors = array();
 			
-			$sql = "UPDATE recommandations_v1 SET ressources=:ressources WHERE id=:id";
+			$sql = "UPDATE recommandations SET ressources=:ressources, responsable=:responsable, actions=:actions, percentage=:percentage WHERE id=:id";
       
 		  $stid = oci_parse($db, $sql);
-			oci_bind_by_name($stid, ":id", $id);
-			oci_bind_by_name($stid, ":ressources", $ressources);
+
+			$inputs = array(':ressources' => $ressources, 
+											':responsable' => $responsable,
+											':actions' => $actions,
+											':percentage' => $percentage,
+											':id' => $id,);
+
+			foreach ($inputs as $key => $val) {
+				oci_bind_by_name($stid, $key, $inputs[$key]);
+			}
 
 			if(!oci_execute($stid,OCI_DEFAULT)) {
 				$errors[] = $stmt->error;

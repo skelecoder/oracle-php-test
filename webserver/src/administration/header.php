@@ -30,11 +30,19 @@
 					
 					<ul class="nav nav-list">
 						
-						<li class="<?php active('missions.php');?>">
-							<a href="./missions.php">
-								<span>Missions</span>
-							</a>
-						</li>
+						<?php if(isset($_SESSION['login']) and ($_SESSION['type']=='PF')) { ?>
+							<li class="<?php active('missions-pf.php');?>">
+								<a href="./missions-pf.php">
+									<span>Missions</span>
+								</a>
+							</li>
+						<?php }else{ ?>
+							<li class="<?php active('missions.php');?>">
+								<a href="./missions.php">
+									<span>Missions</span>
+								</a>
+							</li>
+						<?php } ?>
 						<?php if(isset($_SESSION['login']) and $_SESSION['type']=='ADMIN') { ?>
 						<li class="<?php active('administrations.php');?>">
 							<a href="./administrations.php?niveau=1">
