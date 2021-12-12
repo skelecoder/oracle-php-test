@@ -30,20 +30,20 @@
 					
 					<ul class="nav nav-list">
 						
-						<li class="<?php active('recommandations.php');?>">
-							<a href="./recommandations.php">
-								<span>Recommandations</span>
-							</a>
-						</li>
 						<li class="<?php active('missions.php');?>">
 							<a href="./missions.php">
 								<span>Missions</span>
 							</a>
 						</li>
+						<?php if(isset($_SESSION['login']) and $_SESSION['type']=='ADMIN') { ?>
 						<li class="<?php active('administrations.php');?>">
 							<a href="./administrations.php?niveau=1">
 								<span>Administrations</span>
 							</a>
+						</li>
+						<?php } ?>
+						<li><!-- logout -->
+							<a href="./logout.php"><i class="fa fa-power-off"></i> Se déconnecter</a>
 						</li>
 					</ul>
 
@@ -79,16 +79,16 @@
 								<img class="user-avatar" alt="" src="" height="34" /> 
 								<span class="user-name">
 									<span class="hidden-xs" style="color:white;">
-										<span style="text-transform: uppercase;">PF</span> <i class="fa fa-angle-down"></i>
+										<span style="text-transform: uppercase;"><?php echo $_SESSION['nom']; ?></span> <i class="fa fa-angle-down"></i>
 									</span>
 								</span>
 							</a>
 							<ul class="dropdown-menu hold-on-click">
 								<li><!-- logout -->
-									<a href="./pass_change.php"><i class="fa fa-shield"></i> <span>تغيير كلمة السر</span></a>
+									<a href="./pass_change.php"><i class="fa fa-shield"></i> <span> Changer mot de passe</span></a>
 								</li>
 								<li><!-- logout -->
-									<a href="./logout.php"><i class="fa fa-power-off"></i> خروج</a>
+									<a href="./logout.php"><i class="fa fa-power-off"></i> Se déconnecter</a>
 								</li>
 							</ul>
 						</li>

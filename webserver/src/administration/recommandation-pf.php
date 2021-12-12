@@ -44,6 +44,12 @@
 
 				<div id="content" class="padding-20">
 
+					<div class="row margin-bottom-20">
+            <div class="col-lg-12">
+              <a class="btn btn-default btn-xs" href="./recommandations.php?mission_admin_id=<?php echo $recommandation['MISSIONS_ADMINISTRATIONS_ID']; ?>"><< Retour à la liste des recommandations</a>
+            </div>
+          </div>
+
 					<div class="row">
 						<div class="col-lg-12">
 							<div class="panel panel-default">
@@ -79,11 +85,15 @@
 											</div>
 										</div>
 
+										<?php
+											if(isset($_SESSION['login']) and ($_SESSION['type']=='PF')){
+										?>
 										<!-- panel footer -->
 										<div class="panel-footer clearfix">
 											<button type="submit" class="btn btn-success pull-right btn-sm nomargin-top nomargin-bottom">Sauvegarder</button>
 										</div>
 										<!-- /panel footer -->
+										<?php } ?>
 									</fieldset>
 								</form>
 
@@ -100,7 +110,11 @@
 											<strong>Consistance (détail) des actions</strong>
 										</span>
 										<ul class="options pull-right relative list-unstyled">
+											<?php
+												if(isset($_SESSION['login']) and ($_SESSION['type']=='PF')){
+											?>
 											<li><a href="actions-recommandations.php?recommandationId=<?php echo $recommandation_id;?>" class="btn btn-primary btn-xs white"><i class="fa fa-edit"></i> Gestion des actions</a></li>
+											<?php } ?>
 										</ul>
 									</div>
 									<!-- panel content -->

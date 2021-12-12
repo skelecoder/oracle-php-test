@@ -1,4 +1,5 @@
-<?php include_once 'functions.php'; ?>
+<?php include_once 'checking-all.php'; ?>
+
 <?php	
 	if(isset($_GET['mission_admin_id'])) {
 		$mission_admin_id = htmlentities($_GET['mission_admin_id']);

@@ -1,4 +1,4 @@
-<?php include_once 'functions.php'; ?>
+<?php include_once 'checking-all.php'; ?>
 
 <!doctype html>
 <html lang="en-US">
@@ -60,7 +60,7 @@
 											</thead>
 											<tbody>
 												<?php
-													$missions = getMissions(0);
+													$missions = getMissionsByUserId(0, $_SESSION['id']);
 													while (($mission = oci_fetch_array($missions, OCI_ASSOC)) != false) {
 												?>
 												<tr>

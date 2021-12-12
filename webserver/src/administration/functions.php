@@ -141,4 +141,30 @@
 		return($stid);
 	}
 
+	function getUserByUsername($username){
+		include 'connect_db.php';
+		
+		$sql = 'SELECT * FROM users WHERE username = :username';
+		$stid = oci_parse($db, $sql);
+
+		oci_bind_by_name($stid, ":username", $username);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
+
+	function getMissionsByUserId($archive, $user_id){
+		include 'connect_db.php';
+		
+		$stid = oci_parse($db, 'select * from missions WHERE user_id=:user_id AND archive=:archive');
+
+		oci_bind_by_name($stid, ":user_id", $user_id);
+		oci_bind_by_name($stid, ":archive", $archive);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
+
 ?>
