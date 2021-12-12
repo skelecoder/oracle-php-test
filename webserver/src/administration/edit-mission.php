@@ -109,6 +109,51 @@
 
 					</div>
 
+					<div class="row">
+						<div class="col-lg-12">
+							<div id="panel-misc-portlet-r5" class="panel panel-default">
+
+								<div class="panel-heading">
+									<span class="elipsis"><!-- panel title -->
+										<strong>Organismes controlés</strong>
+									</span>
+									<ul class="options pull-right relative list-unstyled">
+										<li><a href="link-administration-to-mission.php?id=<?php echo $mission_id; ?>" class="btn btn-primary btn-xs white size-13"><i class="fa fa-plus"></i> Ajouter organisme</a></li>
+									</ul>
+								</div>
+								<!-- panel content -->
+								<div class="panel-body">
+									<table id="engagements" class="table table-striped table-bordered table-hover">
+										<thead>
+											<tr>
+												<th style="width:50%;" class="header-cell">Titre</th>
+												<th class="header-cell">Principal?</th>
+												<th></th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php
+												$missions_administrations = getAdministrationsByMissionId($mission_id);
+												while (($mission_administration = oci_fetch_array($missions_administrations, OCI_ASSOC)) != false) {
+											?>
+											<tr>
+												<td class="table-cell"><?php echo stripcslashes($mission_administration['TITRE_ADMIN']); ?></td>
+												<td>
+													<input <?php if($mission_administration['PRINCIPAL']==1) { echo 'checked'; } ?> value="<?php echo $mission_administration['ID']; ?>" type="checkbox" name="principal">
+												</td>
+												<td>
+													<a href="change-link-administration-to-mission.php?id=<?php echo $mission_administration['ID']; ?>" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Changer organisme</a>
+													<a href="./administration.php?id=<?php echo $mission_administration['ID']; ?>" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Consulter les recommandations</a>
+												</td>
+											</tr>
+											<?php } ?>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</section>
 			<!-- /MIDDLE -->
@@ -137,6 +182,30 @@
 					}
 				});
 			});
+
+			$('input[type=checkbox][name=principal]').change(function() {
+				if($(this).is(":checked")) {
+					var principal = 1;
+				}else{
+					var principal = 0;
+				}
+				$.ajax({
+					url: 'set-organisme-principal-by-mission.php',
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						mission_id_administration_id:$(this).val(),
+						principal: principal
+					},
+					success: function(data) {
+						if(data.response.status == 'success'){
+							//window.location.reload();
+						}else{
+
+						}
+					}
+        });
+      });
 		</script>
 
 	</body>
