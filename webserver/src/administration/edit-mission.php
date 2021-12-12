@@ -143,7 +143,7 @@
 												</td>
 												<td>
 													<a href="change-link-administration-to-mission.php?id=<?php echo $mission_administration['ID']; ?>" class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Changer organisme</a>
-													<a href="./administration.php?id=<?php echo $mission_administration['ID']; ?>" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Consulter les recommandations</a>
+													<a href="./recommandations.php?mission_admin_id=<?php echo $mission_administration['ID']; ?>" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Consulter les recommandations</a>
 												</td>
 											</tr>
 											<?php } ?>

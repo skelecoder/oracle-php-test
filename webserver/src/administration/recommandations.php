@@ -1,4 +1,11 @@
 <?php include_once 'functions.php'; ?>
+<?php	
+	if(isset($_GET['mission_admin_id'])) {
+		$mission_admin_id = htmlentities($_GET['mission_admin_id']);
+		$missions_administrations = getMissionAdministrationById($mission_admin_id);
+    $mission_id_administration_id = oci_fetch_array($missions_administrations, OCI_ASSOC+OCI_RETURN_NULLS);
+	}
+?>
 
 <!doctype html>
 <html lang="en-US">
@@ -24,13 +31,12 @@
 			-->
 			<section id="middle">
 
-
 				<!-- page title -->
 				<header id="page-header">
-					<a href="new-recommandation.php" class="btn btn-sm btn-green pull-right"><i class="fa fa-plus"></i> Ajouter une recommandation</a>
-					<h1>Liste des recommandations</h1>
+					<a href="new-recommandation.php?mission_admin_id=<?php echo $mission_admin_id; ?>" class="btn btn-sm btn-green pull-right"><i class="fa fa-plus"></i> Ajouter une recommandation</a>
+					<h1>Mission: <?php echo stripcslashes($mission_id_administration_id['TITRE_MISSION']); ?></h1>
 					<ol class="breadcrumb">
-						<li class="active">Liste des recommandations</li>
+						<li class="active">Organisme controlé: <?php echo stripcslashes($mission_id_administration_id['TITRE_ADMIN']); ?></li>
 					</ol>
 				</header>
 				<!-- /page title -->
@@ -39,6 +45,12 @@
 				<div id="content" class="padding-20">
 
 					<div class="page-profile">
+						
+						<div class="row margin-bottom-20">
+							<div class="col-lg-12">
+								<a class="btn btn-default btn-xs" href="./edit-mission.php?id=<?php echo $mission_id_administration_id['MISSION_ID']; ?>"><< Retour à la mission</a>
+							</div>
+						</div>
 
 						<div class="row">
 							<div class="col-lg-12">
@@ -62,7 +74,7 @@
 											</thead>
 											<tbody>
 												<?php
-													$recommandations = getRecommandations(0);
+													$recommandations = getRecommandationsByMission_Administration_Id(0, $mission_admin_id);
 													while (($recommandation = oci_fetch_array($recommandations, OCI_ASSOC)) != false) {
 												?>
 												<tr>

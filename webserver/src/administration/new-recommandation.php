@@ -1,4 +1,11 @@
 <?php include_once 'functions.php'; ?>
+<?php	
+	if(isset($_GET['mission_admin_id'])) {
+		$mission_admin_id = htmlentities($_GET['mission_admin_id']);
+		$missions_administrations = getMissionAdministrationById($mission_admin_id);
+    $mission_id_administration_id = oci_fetch_array($missions_administrations, OCI_ASSOC+OCI_RETURN_NULLS);
+	}
+?>
 
 <!doctype html>
 <html lang="en-US">
@@ -27,10 +34,9 @@
 
 				<!-- page title -->
 				<header id="page-header">
-					<h1>Nouvelle recommandation</h1>
+          <h1>Mission: <?php echo stripcslashes($mission_id_administration_id['TITRE_MISSION']); ?></h1>
 					<ol class="breadcrumb">
-						<li><a href="./recommandations.php">Liste des recommandations</a></li>
-						<li class="active">Nouvelle recommandation</li>
+						<li class="active">Organisme controlé: <?php echo stripcslashes($mission_id_administration_id['TITRE_ADMIN']); ?></li>
 					</ol>
 				</header>
 				<!-- /page title -->
@@ -38,13 +44,19 @@
 
 				<div id="content" class="padding-20">
 
+          <div class="row margin-bottom-20">
+						<div class="col-lg-12">
+              <a class="btn btn-default btn-xs" href="./recommandations.php?mission_admin_id=<?php echo $mission_admin_id; ?>"><< Retour à la liste des recommandations</a>
+            </div>
+          </div>
+
 					<div class="row">
 						
 						<div class="col-lg-12">
 							<div id="panel-misc-portlet-r5" class="panel panel-default">
-								
+              
 								<div class="panel-heading">
-									<a class="btn btn-primary btn-xs" href="./recommandations.php"><< Retour</a>
+									Nouvelle recommandation
 								</div>
 								
 								<form id="recommandation-form" class="form-horizontal" method="POST">
@@ -169,14 +181,15 @@
 		<!-- JS DATATABLE -->
 		<script type="text/javascript">
 			$('form').submit(function(ev) {
+        alert('sdf');
 				ev.preventDefault();
 				$.ajax({
 					type: 'POST',
 					url: 'add-recommandation.php',
-					data: $('form').serialize(),
+					data: $('form').serialize()+"&mission_admin_id=<?php echo $mission_admin_id; ?>",
 					success: function(data) {
 						if(data.response.status == 'success'){
-							window.location.replace('recommandations.php');
+							window.location.replace('recommandations.php?mission_admin_id=<?php echo $mission_admin_id; ?>');
 						}else{
 							_toastr("Erreur","top-right","danger",false);
 						}

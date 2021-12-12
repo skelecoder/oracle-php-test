@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 	function getRecommandations($archive){
 		include 'connect_db.php';
@@ -6,6 +6,19 @@
 		$stid = oci_parse($db, 'select * from recommandations WHERE archive=:archive');
 
 		oci_bind_by_name($stid, ":archive", $archive);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
+
+	function getRecommandationsByMission_Administration_Id($archive, $missionmission_administration_id){
+		include 'connect_db.php';
+		
+		$stid = oci_parse($db, 'select * from recommandations WHERE archive=:archive AND missions_administrations_id=:missions_administrations_id');
+
+		oci_bind_by_name($stid, ":archive", $archive);
+		oci_bind_by_name($stid, ":missions_administrations_id", $missionmission_administration_id);
 		oci_execute($stid);
 		
 		oci_close($db);
@@ -115,7 +128,7 @@
 		return($stid);
 	}
 
-	function getAdministrationsById($id){
+	function getMissionAdministrationById($id){
 		include 'connect_db.php';
 		
 		$sql = 'select ma.id as id, ma.mission_id, ma.principal, m.title_fr as titre_mission, ad.title_fr as titre_admin from missions_administrations ma LEFT JOIN missions m ON m.id=ma.mission_id LEFT JOIN administrations ad ON ad.id=ma.administration_id WHERE ma.id=:id';

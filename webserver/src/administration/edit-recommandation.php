@@ -48,13 +48,19 @@
 
 				<div id="content" class="padding-20">
 
+          <div class="row margin-bottom-20">
+            <div class="col-lg-12">
+              <a class="btn btn-default btn-xs" href="./recommandations.php?mission_admin_id=<?php echo $recommandation['MISSIONS_ADMINISTRATIONS_ID']; ?>"><< Retour à la liste des recommandations</a>
+            </div>
+          </div>
+
 					<div class="row">
 						
 						<div class="col-lg-12">
 							<div id="panel-misc-portlet-r5" class="panel panel-default">
 								
 								<div class="panel-heading">
-									<a class="btn btn-primary btn-xs" href="./recommandations.php"><< Retour</a>
+									Détail de la recommandation
 								</div>
 								
 								<form id="recommandation-form" class="form-horizontal" method="POST">

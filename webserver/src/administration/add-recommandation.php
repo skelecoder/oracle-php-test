@@ -2,6 +2,7 @@
 		include 'connect_db.php';
 		if ( isset($_POST) ) {
 
+			$mission_admin_id = $_POST['mission_admin_id'];
       $code = $_POST['code'];
       
 			// title_ar
@@ -33,11 +34,12 @@
 
       $errors = array();
 			
-			$sql = "INSERT INTO recommandations (mission_id, code, title_ar, title_fr, start_date, end_date, escompte_ar, escompte_fr, obtenu_ar, obtenu_fr, observations_ar, observations_fr) VALUES (1, :code, :title_ar, :title_fr, TO_DATE( :start_date, 'YYYY-MM-DD' ), TO_DATE( :end_date, 'YYYY-MM-DD' ), :escompte_ar, :escompte_fr, :obtenu_ar, :obtenu_fr, :observations_ar, :observations_fr)";
+			$sql = "INSERT INTO recommandations (missions_administrations_id, code, title_ar, title_fr, start_date, end_date, escompte_ar, escompte_fr, obtenu_ar, obtenu_fr, observations_ar, observations_fr) VALUES (:missions_administrations_id, :code, :title_ar, :title_fr, TO_DATE( :start_date, 'YYYY-MM-DD' ), TO_DATE( :end_date, 'YYYY-MM-DD' ), :escompte_ar, :escompte_fr, :obtenu_ar, :obtenu_fr, :observations_ar, :observations_fr)";
       
 		  $stid = oci_parse($db, $sql);
 
-      $inputs = array(':code' => $code, 
+      $inputs = array(':missions_administrations_id' => $mission_admin_id, 
+											':code' => $code, 
                       ':title_ar' => $title_ar,
                       ':title_fr' => $title_fr,
                       ':start_date' => $start_date,

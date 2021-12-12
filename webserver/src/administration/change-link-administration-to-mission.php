@@ -3,7 +3,7 @@
 <?php	
 	if(isset($_GET['id'])) {
 		$id = htmlentities($_GET['id']);
-    $missions_administrations = getAdministrationsById($id);
+    $missions_administrations = getMissionAdministrationById($id);
     $mission_id_administration_id = oci_fetch_array($missions_administrations, OCI_ASSOC+OCI_RETURN_NULLS);
 	}
 ?>
