@@ -133,7 +133,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">RÉSULTATS ESCOMPTÉS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<?php if($recommandation['ESCOMPTE'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['ESCOMPTE']));} ?>
+											<?php if($recommandation['ESCOMPTE_FR'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['ESCOMPTE_FR']));} ?>
 										</div>
 									</div>
 
@@ -143,7 +143,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">RÉSULTATS OBTENUS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<?php if($recommandation['OBTENU'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['OBTENU']));} ?>
+											<?php if($recommandation['OBTENU_FR'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['OBTENU_FR']));} ?>
 										</div>
 									</div>
 
@@ -153,7 +153,7 @@ header("content-disposition: attachment;filename=Report.doc");
 											<h5 class="nomargin uppercase" style="color:#007631;">OBSERVATIONS</h5>
 										</div>
 										<div class="col-md-12 padding-20">
-											<?php if($recommandation['OBSERVATIONS'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['OBSERVATIONS']));} ?>
+											<?php if($recommandation['OBSERVATIONS_FR'] == ''){echo '<div class="alert alert-default alert-mini">Néant</div>'; }else{echo nl2br(stripcslashes($recommandation['OBSERVATIONS_FR']));} ?>
 										</div>
 									</div>
 
