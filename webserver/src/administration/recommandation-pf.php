@@ -1,4 +1,4 @@
-<?php include_once 'checking-pf.php'; ?>
+<?php include_once 'checking-all.php'; ?>
 
 <?php	
 	if(isset($_GET['id'])) {
@@ -49,6 +49,78 @@
               <a class="btn btn-default btn-xs" href="./recommandations.php?mission_admin_id=<?php echo $recommandation['MISSIONS_ADMINISTRATIONS_ID']; ?>"><< Retour à la liste des recommandations</a>
             </div>
           </div>
+
+					<div class="row">
+						<div class="col-lg-12">
+							<div id="panel-misc-portlet-r5" class="panel panel-default">
+
+								<div class="panel-heading">
+									<span class="elipsis"><!-- panel title -->
+										<strong>Fiche recommandation</strong>
+									</span>
+								</div>
+								<!-- panel content -->
+								<div class="panel-body">
+
+								<div class="row">
+									<div class="col-lg-6">
+										<p><b>Date de démarrage prévisionnelle</b></p>
+										<?php if($recommandation['START_DATE'] == '0000-00-00') {
+											echo '';
+										}else{
+											echo date_format(date_create($recommandation['START_DATE']),"d-m-Y");
+										} ?>
+									</div>
+									<div class="col-lg-6">
+										<p><b>Date d’achèvement prévisionnelle</b></p>
+										<?php if($recommandation['END_DATE'] == '0000-00-00') {
+											echo '';
+										}else{
+											echo date_format(date_create($recommandation['END_DATE']),"d-m-Y");
+										} ?>
+									</div>
+								</div>
+									
+								<div class="row margin-top-20">
+									<div class="col-lg-6">
+										<p><b>Résultats escomptés (Français)</b></p>
+										<div class="margin-bottom-20" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['ESCOMPTE_FR'])); ?></div>
+									</div>
+									<div class="col-lg-6">
+										<p><b>Résultats escomptés (العربية)</b></p>
+										<div class="margin-bottom-20" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['ESCOMPTE_AR'])); ?></div>
+									</div>
+								</div>
+									
+								<div class="row">
+									<div class="col-lg-6">
+										<p><b>Résultats obtenus (Français)</b></p>
+										<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBTENU_FR'])); ?></div>
+									</div>
+									<div class="col-lg-6">
+										<p><b>Résultats obtenus (العربية)</b></p>
+										<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBTENU_AR'])); ?></div>
+									</div>
+								</div>
+									
+									<div class="row">
+										<div class="col-lg-6">
+											<p><b>Obsérvations (Français)</b></p>
+											<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBSERVATIONS_FR'])); ?></div>
+										</div>
+										<div class="col-lg-6">
+											<p><b>Obsérvations (العربية)</b></p>
+											<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBSERVATIONS_AR'])); ?></div>
+										</div>
+									</div>
+
+								</div>
+								<!-- /panel content -->
+							</div>
+						</div>
+						<!-- / 1.FICHE -->
+
+					</div>
 
 					<div class="row">
 						<div class="col-lg-12">
@@ -174,78 +246,6 @@
 								</div>
 							</div>
 						</div>
-
-					<div class="row">
-						<div class="col-lg-12">
-							<div id="panel-misc-portlet-r5" class="panel panel-default">
-
-								<div class="panel-heading">
-									<span class="elipsis"><!-- panel title -->
-										<strong>Fiche recommandation</strong>
-									</span>
-								</div>
-								<!-- panel content -->
-								<div class="panel-body">
-
-								<div class="row">
-									<div class="col-lg-6">
-										<p><b>Date de démarrage prévisionnelle</b></p>
-										<?php if($recommandation['START_DATE'] == '0000-00-00') {
-                      echo '';
-                    }else{
-                      echo date_format(date_create($recommandation['START_DATE']),"d-m-Y");
-                    } ?>
-									</div>
-									<div class="col-lg-6">
-										<p><b>Date d’achèvement prévisionnelle</b></p>
-										<?php if($recommandation['END_DATE'] == '0000-00-00') {
-                      echo '';
-                    }else{
-                      echo date_format(date_create($recommandation['END_DATE']),"d-m-Y");
-                    } ?>
-									</div>
-								</div>
-									
-								<div class="row margin-top-20">
-									<div class="col-lg-6">
-										<p><b>Résultats escomptés (Français)</b></p>
-										<div class="margin-bottom-20" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['ESCOMPTE_FR'])); ?></div>
-									</div>
-									<div class="col-lg-6">
-										<p><b>Résultats escomptés (العربية)</b></p>
-										<div class="margin-bottom-20" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['ESCOMPTE_AR'])); ?></div>
-									</div>
-								</div>
-									
-								<div class="row">
-									<div class="col-lg-6">
-										<p><b>Résultats obtenus (Français)</b></p>
-										<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBTENU_FR'])); ?></div>
-									</div>
-									<div class="col-lg-6">
-										<p><b>Résultats obtenus (العربية)</b></p>
-										<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBTENU_AR'])); ?></div>
-									</div>
-								</div>
-									
-									<div class="row">
-										<div class="col-lg-6">
-											<p><b>Obsérvations (Français)</b></p>
-											<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBSERVATIONS_FR'])); ?></div>
-										</div>
-										<div class="col-lg-6">
-											<p><b>Obsérvations (العربية)</b></p>
-											<div class="margin-bottom-30" style="text-align:justify"><?php echo nl2br(stripcslashes($recommandation['OBSERVATIONS_AR'])); ?></div>
-										</div>
-									</div>
-
-								</div>
-								<!-- /panel content -->
-							</div>
-						</div>
-						<!-- / 1.FICHE -->
-
-					</div>
 
 				</div>
 			</section>
