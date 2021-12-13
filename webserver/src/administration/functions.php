@@ -223,4 +223,17 @@
 		}
 	}
 
+	function getUserById($id){
+		include 'connect_db.php';
+		
+		$sql = 'SELECT * FROM users WHERE id = :id';
+		$stid = oci_parse($db, $sql);
+
+		oci_bind_by_name($stid, ":id", $id);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
+
 ?>

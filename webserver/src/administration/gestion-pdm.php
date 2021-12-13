@@ -90,7 +90,7 @@
 			</section>
 			<!-- /MIDDLE -->
 			
-			<!-- Delete PROJECT Modal >-->
+			<!-- SUPPRIMER ACTION -->
 			<div id="delete-modal" data-id="" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm">
 					<div class="modal-content">
@@ -98,12 +98,12 @@
 						<!-- header modal -->
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="mySmallModalLabel">حذف المستعمل</h4>
+							<h4 class="modal-title" id="mySmallModalLabel">Supprimer porteur de mission</h4>
 						</div>
 
 						<!-- body modal -->
 						<div class="modal-body">
-							هل تريد حذف المستعمل؟
+							Voulez vous supprimer ce porteur de mission ?
 							
 							<div class="col-md-12 text-center">
 								<img class="spinner img-reponsive softhide" src="assets/images/spinner.gif" />
@@ -112,14 +112,14 @@
 
 						<!-- Modal Footer -->
 						<div class="modal-footer">
-							<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">إلغاء</button>
-							<button onclick="confirmDelete();" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> تأكيد الحذف</button>
+							<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">Annuler</button>
+							<button onclick="confirmDelete();" type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Confirmer suppression</button>
 						</div>
 
 					</div>
 				</div>
 			</div>
-			<!-- Small Modal >-->
+			<!-- SUPPRIMER ACTION -->
 
 		</div>
 	
