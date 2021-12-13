@@ -157,7 +157,7 @@ header("content-disposition: attachment;filename=Report.doc");
 										</div>
 									</div>
 
-									<div class="row" style="border-top: 5px solid #E7EED8;">	
+									<div class="softhide row" style="border-top: 5px solid #E7EED8;">	
 										<div class="col-md-8 col-md-offset-2 text-center" style="background:#E7EED8; border-radius:0 0 40px 40px;">
 											<div class="rectangle absolute" style="top:2px;<?php if($locale=='ar'){echo 'right';}else{echo 'left';} ?>:30px;"></div>
 											<h5 class="nomargin uppercase" style="color:#007631;">DOCUMENTS JUSTIFICATIFS</h5>
