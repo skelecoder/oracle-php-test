@@ -105,57 +105,74 @@
 								<h4 class="margin-bottom-0 bold text-black"><i class="fa fa-circle margin-right-10" style="color:#D9534F;"></i> Non entamées</h4>
 								<p class="margin-top-0 size-30 text-black"><b>1/10</b></p>
 							</div>
-							
-							<h3><b>Recommandations adressées à l’organisme principal contrôlé (SONACOS) :</b></h3>
-							
-							<div class="table-responsive">
-								<table class="table table-hover">
-									<thead>
-										<tr>
-											<th class="text-center bold header-cell-green">Code recommandation</th>
-											<th style="width:30%;" class="header-cell-green bold">La recommandation</th>
-											<th class="text-center bold header-cell-green">Date de démarrage</th>
-											<th class="text-center bold header-cell-green">Date d’achèvement</th>
-											<th class="text-center bold header-cell-green">Etat d avancement</th>
-											<th class="text-center bold header-cell-green"> Avancement %</th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php
-											$recommandations = getRecommandationsByMissionId($mission_id);
-											while (($recommandation = oci_fetch_array($recommandations, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
-										?>
+
+							<?php
+								$missions_administrations = getAdministrationsByMissionId($mission_id);
+								while (($mission_administration = oci_fetch_array($missions_administrations, OCI_ASSOC)) != false) {
+							?>
+								<?php if($mission_administration['PRINCIPAL']==1) { ?>
+									<h3><b>Recommandations adressées à l’organisme principal contrôlé (<?php echo stripcslashes($mission_administration['TITRE_ADMIN']); ?>) :</b></h3>
+								<?php }else{ ?>
+									<h3><b>Recommandations adressées au (<?php echo stripcslashes($mission_administration['TITRE_ADMIN']); ?>)</b></h3>
+								<?php } ?>
+
+								<div class="table-responsive">
+									<table class="table table-hover">
+										<thead>
 											<tr>
-												<td class="table-cell-green text-center bold"><?php echo nl2br(stripcslashes($recommandation['CODE'])); ?></td>
-												<td class="table-cell-green">
-													<?php echo "<a href='./projets.php?lang=".$locale."&amp;code=".$recommandation['CODE']."'>"; ?>
-													<?php echo nl2br(stripcslashes($recommandation['TITLE_FR'])); ?>	</a>											
-												</td>
-												<td class="table-cell-green text-center size-12 bold">
-													<?php echo nl2br(stripcslashes($recommandation['START_DATE'])); ?>
-												</td>
-												<td class="table-cell-green text-center size-12 bold">
-													<?php echo nl2br(stripcslashes($recommandation['END_DATE'])); ?>
-												</td>
-												<td class="table-cell-green text-center">
-													<?php $percentage = $recommandation['PERCENTAGE']; ?>
-													<?php list($etat, $label) = ( $percentage == 0 ) ? ['Non entamée','danger']: ( $percentage  == 100 ? ['Achevée','success'] : ['Partiellement réalisée','warning'] ); ?>
-													<span class="label label-<?php echo $label; ?>"><?php echo $etat; ?></span>
-												</td>
-												<td class="table-cell-green">
-													<?php echo $percentage; ?> %
-													<div class="progress progress-xs">
-														<div class="progress-bar progress-bar-<?php echo $label; ?>" role="progressbar" aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percentage; ?>%; min-width: 0em;">
-															<span class="sr-only"><?php echo $percentage ?>% Complete</span>
+												<th class="text-center bold header-cell-green">Code recommandation</th>
+												<th style="width:30%;" class="header-cell-green bold">La recommandation</th>
+												<th class="text-center bold header-cell-green">Date de démarrage</th>
+												<th class="text-center bold header-cell-green">Date d’achèvement</th>
+												<th class="text-center bold header-cell-green">Etat d avancement</th>
+												<th class="text-center bold header-cell-green"> Avancement %</th>
+											</tr>
+										</thead>
+										<tbody>
+											<?php
+												$recommandations = getRecommandationsByMission_Administration_Id(0, $mission_administration['ID']);
+												while (($recommandation = oci_fetch_array($recommandations, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+											?>
+												<tr>
+													<td class="table-cell-green text-center bold"><?php echo nl2br(stripcslashes($recommandation['CODE'])); ?></td>
+													<td class="table-cell-green">
+														<?php echo "<a href='./projets.php?lang=".$locale."&id=".$recommandation['ID']."'>"; ?>
+														<?php echo nl2br(stripcslashes($recommandation['TITLE_FR'])); ?>	</a>											
+													</td>
+													<td class="table-cell-green text-center size-12 bold">
+														<?php echo nl2br(stripcslashes($recommandation['START_DATE'])); ?>
+													</td>
+													<td class="table-cell-green text-center size-12 bold">
+														<?php echo nl2br(stripcslashes($recommandation['END_DATE'])); ?>
+													</td>
+													<td class="table-cell-green text-center">
+														<?php $percentage = $recommandation['PERCENTAGE']; ?>
+														<?php list($etat, $label) = ( $percentage == 0 ) ? ['Non entamée','danger']: ( $percentage  == 100 ? ['Achevée','success'] : ['Partiellement réalisée','warning'] ); ?>
+														<span class="label label-<?php echo $label; ?>"><?php echo $etat; ?></span>
+													</td>
+													<td class="table-cell-green">
+														<?php echo $percentage; ?> %
+														<div class="progress progress-xs">
+															<div class="progress-bar progress-bar-<?php echo $label; ?>" role="progressbar" aria-valuenow="<?php echo $percentage; ?>" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $percentage; ?>%; min-width: 0em;">
+																<span class="sr-only"><?php echo $percentage ?>% Complete</span>
+															</div>
 														</div>
-													</div>
+													</td>
+												</tr>
+											<?php } ?>
+											<?php if(oci_num_rows($recommandations) == 0) { ?>
+											<tr>
+												<td colspan="6" class="table-cell-green text-center">
+													<?php echo 'pas de données'; ?>
 												</td>
 											</tr>
-										<?php } ?>
-										<?php echo '<script type="text/javascript">' . 'document.getElementById("rec_count").innerHTML = ' . oci_num_rows($recommandations) . ';</script>'; ?>
-                  					</tbody>
-								</table>
-							</div>
+											<?php } ?>
+
+											<?php echo '<script type="text/javascript">' . 'document.getElementById("rec_count").innerHTML = ' . oci_num_rows($recommandations) . ';</script>'; ?>
+															</tbody>
+									</table>
+								</div>
+							<?php } ?>
 							
 						</div>
 						

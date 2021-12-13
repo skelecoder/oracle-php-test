@@ -1,7 +1,7 @@
 <?php include_once 'functions.php'; ?>
 <?php	
-	if(isset($_GET['code'])) {
-		$recommandation_code = htmlentities($_GET['code']);
+	if(isset($_GET['id'])) {
+		$recommandation_id = htmlentities($_GET['id']);
 	}
 ?>
 <?php
@@ -19,7 +19,7 @@ header("content-disposition: attachment;filename=Report.doc");
 		<?php include 'meta.php'; ?>
 		<?php include 'header.php'; ?>
 		<?php 
-			$recommandation = oci_fetch_array(getRecommandationByCode($recommandation_code), OCI_ASSOC+OCI_RETURN_NULLS); 
+			$recommandation = oci_fetch_array(getRecommandationById($recommandation_id), OCI_ASSOC+OCI_RETURN_NULLS); 
 		?>
 
 		<style>
