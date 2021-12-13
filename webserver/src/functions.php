@@ -101,4 +101,45 @@
 		return($stid);
 	}
 
+	function getTotalRecommandationsByMissioId($id){
+		include 'connect_db.php';
+		
+		$sql = 'SELECT * FROM missions_administrations WHERE mission_id = :mission_id';
+		$missions_administrations = oci_parse($db, $sql);
+		oci_bind_by_name($missions_administrations, ":mission_id", $id);
+		oci_execute($missions_administrations);
+
+		$total_recommandations = 0;
+		$achevees = 0;
+		$en_cours = 0;
+		$non_entamees = 0;
+
+		while (($mission_administration = oci_fetch_array($missions_administrations, OCI_ASSOC)) != false) {
+			$results=array();
+			//$recommandations = getRecommandationsByMission_Administration_Id(0, $mission_administration['ID']);
+			//$total_recommandations += oci_fetch_all($recommandations, $results, null, null, OCI_FETCHSTATEMENT_BY_ROW);
+			$recommandations = getRecommandationsByMission_Administration_Id(0, $mission_administration['ID']);
+			while (($recommandation = oci_fetch_array($recommandations, OCI_ASSOC+OCI_RETURN_NULLS)) != false) {
+				++$total_recommandations;
+				if($recommandation['PERCENTAGE'] == 100) {
+					++$achevees;
+				}else if($recommandation['PERCENTAGE'] == 0) {
+					++$non_entamees;
+				} else {
+					++$en_cours;
+				}
+			}
+		}
+		
+		oci_close($db);
+
+		$res = array(
+			'total_recommandations' => $total_recommandations,
+			'achevees' => $achevees,
+			'en_cours' => $en_cours,
+			'non_entamees' => $non_entamees
+		);
+		return($res);
+	}
+
 ?>

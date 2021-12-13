@@ -63,6 +63,7 @@
 			<section class="padding-xs" style="background:#ffffff;">
 				<div class="fullcontainer">
 			
+					<?php $stat_recommandations = getTotalRecommandationsByMissioId($mission_id); ?>
 					<div class="row">
 
 						<div class="col-md-3">
@@ -72,7 +73,7 @@
 								<div class="panel panel-default" style="background:#1B5829;">
 									<div class="panel-body text-center">
 										<p class="nomargin size-15 uppercase text-white bold">
-											NOMBRE DES RECOMMANDATIONS: <span id="rec_count" class="font-lato bold"></span>
+											NOMBRE DES RECOMMANDATIONS: <span id="rec_countt" class="font-lato bold"><?php echo $stat_recommandations['total_recommandations']; ?></span>
 										</p>
 									</div>
 								</div>
@@ -89,21 +90,26 @@
 						<div class="col-md-9">
 							<h3><b>Taux cumulé des recommandations</b></h3>
 							<div class="progress progress-lg">
-								<div class="progress-bar progress-bar-success" style="width: 60%">60%</div>
-								<div class="progress-bar progress-bar-warning" style="width: 30%">30%</div>
-								<div class="progress-bar progress-bar-danger" style="width: 10%">10%</div>
+								<?php $perc_achevees = $stat_recommandations['achevees']/$stat_recommandations['total_recommandations'] * 100; ?>
+								<div class="progress-bar progress-bar-success" style="width: <?php echo $perc_achevees; ?>%"><?php echo $perc_achevees; ?>%</div>
+
+								<?php $perc_en_cours = $stat_recommandations['en_cours']/$stat_recommandations['total_recommandations'] * 100; ?>
+								<div class="progress-bar progress-bar-warning" style="width: <?php echo $perc_en_cours; ?>%"><?php echo $perc_en_cours; ?>%</div>
+
+								<?php $perc_non_entamees = $stat_recommandations['non_entamees']/$stat_recommandations['total_recommandations'] * 100; ?>
+								<div class="progress-bar progress-bar-danger" style="width: <?php echo $perc_non_entamees; ?>%"><?php echo $perc_non_entamees; ?>%</div>
 							</div>
 							<div class="col-md-4 text-center">
 								<h4 class="margin-bottom-0 text-black"><i class="fa fa-circle margin-right-10" style="color:#5CB85C;"></i> Achevées</h4>
-								<p class="margin-top-0 size-30 text-black"><b>6/10</b></p>
+								<p class="margin-top-0 size-30 text-black"><b><?php echo $stat_recommandations['achevees']; ?>/<?php echo $stat_recommandations['total_recommandations']; ?></b></p>
 							</div>
 							<div class="col-md-4 text-center">
 								<h4 class="margin-bottom-0 bold text-black"><i class="fa fa-circle margin-right-10" style="color:#F0AD4E;"></i> Partiellement réalisées</h4>
-								<p class="margin-top-0 size-30 text-black"><b>3/10</b></p>
+								<p class="margin-top-0 size-30 text-black"><b><?php echo $stat_recommandations['en_cours']; ?>/<?php echo $stat_recommandations['total_recommandations']; ?></b></p>
 							</div>
 							<div class="col-md-4 text-center">
 								<h4 class="margin-bottom-0 bold text-black"><i class="fa fa-circle margin-right-10" style="color:#D9534F;"></i> Non entamées</h4>
-								<p class="margin-top-0 size-30 text-black"><b>1/10</b></p>
+								<p class="margin-top-0 size-30 text-black"><b><?php echo $stat_recommandations['non_entamees']; ?>/<?php echo $stat_recommandations['total_recommandations']; ?></b></p>
 							</div>
 
 							<?php

@@ -75,7 +75,7 @@
 		oci_close($db);
 		return($stid);
 	}
-
+	
 	function getAdministrationsByNiveau($niveau){
 		include 'connect_db.php';
 		
@@ -83,6 +83,20 @@
 		$stid = oci_parse($db, $sql);
 
 		oci_bind_by_name($stid, ":niveau", $niveau);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
+
+	function getAdministrationsByNiveauByParentId($niveau, $parentId){
+		include 'connect_db.php';
+		
+		$sql = 'SELECT * FROM administrations WHERE niveau = :niveau AND parent_id=:parentId';
+		$stid = oci_parse($db, $sql);
+
+		oci_bind_by_name($stid, ":niveau", $niveau);
+		oci_bind_by_name($stid, ":parentId", $parentId);
 		oci_execute($stid);
 		
 		oci_close($db);

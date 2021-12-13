@@ -1,4 +1,4 @@
-<?php include_once 'functions.php'; ?>
+<?php include_once 'checking-admin.php'; ?>
 
 <?php	
 	if(isset($_GET['id'])) {
@@ -113,7 +113,7 @@
 											</thead>
 											<tbody>
 												<?php
-													$administrations = getAdministrationsByNiveau($niveau + 1);
+													$administrations = getAdministrationsByNiveauByParentId($niveau + 1, $administration_id);
 													while (($administration = oci_fetch_array($administrations, OCI_ASSOC)) != false) {
 												?>
 												<tr>
@@ -204,7 +204,7 @@
 						<!-- header modal -->
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-							<h4 class="modal-title" id="mySmallModalLabel">Edition action</h4>
+							<h4 class="modal-title" id="mySmallModalLabel">Edition administration</h4>
 						</div>
 
 						<!-- body modal -->
@@ -267,10 +267,10 @@
 		<script type="text/javascript">
 			var addAdministration = function(id) {
 				$.ajax({
-					url: 'add-administration.php',
+					url: 'add-sous-administration.php',
 					type: 'POST',
 					dataType: 'json',
-					data: $('#add-form').serialize()+"&niveau=<?php echo $niveau + 1; ?>&parentId=<?php echo $parentId; ?>",
+					data: $('#add-form').serialize()+"&niveau=<?php echo $niveau + 1; ?>&parentId=<?php echo $administration_id; ?>",
 					before: function(){
 						$('.spinner').show();
 					},

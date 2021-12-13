@@ -37,6 +37,11 @@
 											Acceuil
 										</a>
 									</li>
+									<li>
+										<a href="./administration">
+											<button class="size-10 btn btn-xs" style="background:#005BAB;padding:3px 14px;color:white;"><i class="fa fa-users"></i> Espace Administration</button>
+										</a>
+									</li>
 									
 									<!--<li>
 										<a href="./admin/login.php">
