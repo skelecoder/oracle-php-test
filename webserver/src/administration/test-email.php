@@ -1,7 +1,15 @@
 <?php
 
-require '../phpmailer/PHPMailerAutoload.php';
-require '../phpmailer/class.phpmailer.php';
+require_once '../vendor/autoload.php';
+/**
+ * This example shows settings to use when sending via Google's Gmail servers.
+ * This uses traditional id & password authentication - look at the gmail_xoauth.phps
+ * example to see how to use XOAUTH2.
+ * The IMAP section shows how to save this message to the 'Sent Mail' folder using IMAP commands.
+ */
+
+//Import PHPMailer classes into the global namespace
+use PHPMailer\PHPMailer\PHPMailer;
 
 function send_email($to, $name, $subject, $message, $from, $sender_name) {
 	$mail = new PHPMailer(true);
@@ -10,8 +18,8 @@ function send_email($to, $name, $subject, $message, $from, $sender_name) {
 	$mail->isSMTP();
 	$mail->Host = 'smtp.hostinger.com';
 	$mail->SMTPAuth = true;         
-	$mail->Username = 'no-reply@gouvernement-ouvert.ma';                 // SMTP username
-	$mail->Password = 'Ogp@_2021';  
+	$mail->Username = 'no-reply@courdescomptes.govright.tech';                 // SMTP username
+	$mail->Password = 'Cdc@_2021';  
 	//$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
 	//$mail->SMTPSecure = 'tls';
 	$mail->Port = 587;                       // TCP port to connect to
@@ -32,5 +40,5 @@ if (!$mail->send()) {
 }
 //$mail->send();
 }
-send_email('anasamati@gmail.com', 'anas', 'email test', 'email test', 'no-reply@gouvernement-ouvert.ma', 'بوابة الحكومة المنفتحة');
+send_email('anasamati@gmail.com', 'anas', 'email test', 'email test', 'no-reply@courdescomptes.govright.tech', 'بوابة الحكومة المنفتحة');
 ?>

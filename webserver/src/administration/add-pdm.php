@@ -46,7 +46,8 @@
 					'cost' => 11,
 				];
 				
-				$generated_passwrod = random_password();
+				//$generated_passwrod = random_password();
+        $generated_passwrod = '123421';
 				
 				$password = password_hash($generated_passwrod, PASSWORD_BCRYPT, $opciones);
 
@@ -72,16 +73,14 @@
 				oci_commit($db);
 				$response_array['status'] = 'success';
 				
-				$sujet ='تفعيل حساب بوابة الحكومة المنفتحة';
-				$message = '<div dir="rtl">';
-				$message .='السيد(ة) '.$nom.'،<br/><br/>';
-				$message .= 'لقد تم تفعيل حسابكم على بوابة الحكومة المنفتحة. <a href="https://gouvernement-ouvert.ma/co-admin">رابط المنصة</a><br><br>';
-				$message .= "البريد الإلكتروني: {$email} <br/>";
-				$message .= "كلمة السر: <b>{$generated_passwrod}</b> <br/><br/>";
-				$message .= '------------- <br><strong>مع خالص التحيات <br>إدارة البوابة</strong>';
-				$message .= '</div>';
+				$sujet ='Activation du compte de la plateforme de suivi des recommandations';
+				$message ='Mr./Mme. '.$nom.'،<br/><br/>';
+				$message .= 'Votre compte est activé sur la plateforme de suivi des recommandations <a href="http://localhost:8060/administration">Lien</a><br><br>';
+				$message .= "Votre email est: {$email} <br/>";
+				$message .= "Votre mot de passe est: <b>{$generated_passwrod}</b> <br/><br/>";
+				$message .= '------------- <br><strong>Nos salutations</strong>';
 
-				send_email($email, $nom_ar, $sujet, $message, 'no-reply@gouvernement-ouvert.ma', 'بوابة الحكومة المنفتحة');
+				send_email($email, $nom_ar, $sujet, $message, 'no-reply@courdescomptes.govright.tech', 'Cour des comptes');
 			} else {
 				oci_rollback($db);
 				$response_array['status'] = 'error';
