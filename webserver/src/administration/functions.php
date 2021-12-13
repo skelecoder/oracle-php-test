@@ -181,4 +181,46 @@
 		return($stid);
 	}
 
+	function getUsersByType($type){
+		include 'connect_db.php';
+		
+		$sql = 'SELECT * FROM users WHERE type = :type';
+		$stid = oci_parse($db, $sql);
+
+		oci_bind_by_name($stid, ":type", $type);
+		oci_execute($stid);
+		
+		oci_close($db);
+		return($stid);
+	}
+
+	function random_password( $length = 8 ) {
+    $chars = substr( str_shuffle("abcdefghijklmnopqrstuvwxyz"), 0, 3);
+		$charsNum = substr( str_shuffle("0123456789"), 0, 2);
+		$charsMaj = substr( str_shuffle("ABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 2);
+		$charsSpec = substr( str_shuffle("!@#$%^&*()_-=+;:,.?"), 0 , 1);
+
+		$secure_pwd = $chars.$charsNum.$charsMaj.$charsSpec;
+		$password = str_shuffle( $secure_pwd );
+    return $password;
+	}
+
+	function emailExists($email){
+		include 'connect_db.php';
+		
+		$sql = 'SELECT * FROM users WHERE email = :email';
+		$stid = oci_parse($db, $sql);
+
+		oci_bind_by_name($stid, ":email", $email);
+		oci_execute($stid);
+		
+		oci_close($db);
+		
+		if(oci_fetch($stid)) {
+			return 1;
+		}else{
+			return 0;
+		}
+	}
+
 ?>

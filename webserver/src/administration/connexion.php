@@ -32,7 +32,7 @@ if ($loginOK) {
 	$url = '';
   if (isset($_SESSION['login']) && isset($_SESSION['type'])) {
 		if($_SESSION['type'] == 'ADMIN') {
-			$url = './projets-engagements.php?published=1';
+			$url = './missions.php';
 		}else if($_SESSION['type'] == 'PDM') {
 			$url = './missions.php';	
 		}else if($_SESSION['type'] == 'PF') {

@@ -44,6 +44,11 @@
 							</li>
 						<?php } ?>
 						<?php if(isset($_SESSION['login']) and $_SESSION['type']=='ADMIN') { ?>
+						<li class="<?php active('gestion-pdm.php');?>">
+							<a href="./gestion-pdm.php">
+								<span>Gestion des porteurs missions</span>
+							</a>
+						</li>
 						<li class="<?php active('administrations.php');?>">
 							<a href="./administrations.php?niveau=1">
 								<span>Administrations</span>
