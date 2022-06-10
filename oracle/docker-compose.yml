@@ -10,3 +10,4 @@ services:
       - 5500:5500
     environment:
       - ORACLE_CHARACTERSET=UTF8
+    restart: always
